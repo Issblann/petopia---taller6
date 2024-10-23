@@ -34,9 +34,7 @@ export const SeccionParticipar = () => {
           </p>
           <button className="button-community">
             Únete a nuestra comunidad
-            <span>
-              <MdArrowOutward />
-            </span>
+            <MdArrowOutward size={20} />
           </button>
         </div>
         <aside className="numbers-information">

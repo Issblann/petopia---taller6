@@ -19,12 +19,12 @@
 .community-paragraph {
   width: 100%;
   text-align: left;
-  font-weight: 600;
-  font-size: 1.75rem;
+  font-weight: 500;
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
 }
 .button-community {
   border-radius: 14px;
-  font-size: 1em;
+  font-size: 18px;
   padding: 1em;
   border-color: #8645a0;
   color: #8645a0;
@@ -49,20 +49,21 @@
 }
 
 .number {
-  font-size: 4rem;
+  font-size: clamp(2.5rem, 4.5vw, 4rem);
   font-weight: 700;
 }
 
 .images-container {
-  width: 100%;
-  background-color: antiquewhite;
   display: flex;
   margin-top: 1rem;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
   gap: 1rem;
 }
 .images-container img {
-  width: 80%;
-  height: 100%;
+  width: 50%;
+  height: auto;
   border-radius: 8px;
 }
 @media (max-width: 768px) {
@@ -71,6 +72,9 @@
   }
   .paragraph-button {
     width: 100%;
+  }
+  .button-community {
+    padding: 0.3rem;
   }
   .numbers-information {
     width: 100%;
