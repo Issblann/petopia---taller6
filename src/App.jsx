@@ -1,10 +1,12 @@
+import React from 'react';
+import NavBar from './components/landing/NavBar';
 import './App.css';
 
 function App() {
   return (
-    <>
-      <h1>Petopia</h1>
-    </>
+    <div className="App">
+      <NavBar />
+    </div>
   );
 }
 

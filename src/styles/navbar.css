@@ -1,60 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Potta+One&display=swap');
+
 .navbar {
+    width: 100%;
+    background-color: #f8f9fa;
+    padding: 10px 0;
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .navbar-content {
     display: flex;
     justify-content: space-between;
-    align-items: center; 
-    padding: 10px 20px;
-    background-color: #cd0a0a;
-    color: rgb(33, 72, 200);
+    align-items: center;
+    width: 100%;
+    max-width: 700px;
+    padding: 0 20px;
   }
   
-  .nav-links {
-    list-style: none;
+  .logo {
     display: flex;
-    gap: 20px;
+    align-items: center;
   }
   
-  .nav-links li a {
-    color: white;
+  .logo-name {
+    font-family: 'Potta One', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 26px;
+    color: #333;
+    margin-left: 8px;
+  }
+  
+  .logo img {
+    width: 40px;
+    height: auto;
+    margin-right: 10px; 
+    margin-left: 10px;
+  }
+
+  .nav-links {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+  }
+  
+  .nav-links ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+  }
+  
+  .nav-links ul li {
+    margin: 0 15px;
+  }
+  
+  .nav-links ul li a {
     text-decoration: none;
-    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .nav-links ul li a:hover {
+    color: #5c5c5c;
   }
   
   .hamburger {
     display: none;
+    flex-direction: column;
     cursor: pointer;
   }
   
   .hamburger .bar {
-    display: block;
     width: 25px;
     height: 3px;
-    margin: 5px;
-    background-color: white;
+    background-color: #333;
+    margin: 4px 0;
+    transition: 0.3s;
   }
   
-
   @media (max-width: 768px) {
-    .nav-links {
-      position: absolute;
-      top: 60px;
-      right: 0;
-      width: 100%;
-      height: calc(100vh - 60px);
-      background-color: #333;
+    .nav-links ul {
       flex-direction: column;
+      position: absolute;
+      top: 80px;
+      left: -100%;
+      background-color: #f8f9fa;
+      width: 100%;
+      transition: 0.3s;
+      display: flex;
       justify-content: center;
       align-items: center;
-      gap: 30px;
-      transition: transform 0.3s ease-in-out;
-      transform: translateX(100%);
+      text-align: center;
     }
   
-    .nav-links.open {
-      transform: translateX(0);
+    .nav-links.open ul {
+      left: 0;
+    }
+  
+    .nav-links ul li {
+      margin: 20px 0;
     }
   
     .hamburger {
-      display: block;
+      display: flex;
     }
   }
   
