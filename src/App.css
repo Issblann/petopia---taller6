@@ -4,3 +4,14 @@
   padding: 2rem;
   text-align: center;
 }
+
+button {
+  cursor: pointer;
+  background-color: #f8f8f8;
+}
+
+@media (max-width: 768px) {
+  #root {
+    padding: 1rem;
+  }
+}
