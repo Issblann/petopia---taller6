@@ -85,7 +85,7 @@
     .nav-links ul {
       flex-direction: column;
       position: absolute;
-      top: 80px;
+      top: 60px;
       left: -100%;
       background-color: #f8f9fa;
       width: 100%;
