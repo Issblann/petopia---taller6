@@ -7,6 +7,22 @@
   width: 100%;
 }
 
+@media (max-width: 1024px) {
+  #root {
+    max-width: 964px;
+  }
+}
+@media (max-width: 768px) {
+  #root {
+    padding: 1rem;
+  }
+}
+
+button {
+  cursor: pointer;
+  background-color: #f8f8f8;
+}
+
 @media (max-width: 768px) {
   #root {
     padding: 1rem;

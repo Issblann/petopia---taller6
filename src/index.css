@@ -20,9 +20,9 @@
 
 * {
   box-sizing: border-box;
+  font-family: 'Poppins', serif;
   padding: 0;
   margin: 0;
-  font-family: 'Poppins', serif;
 }
 
 body {
@@ -32,4 +32,4 @@ body {
   width: 100%;
   min-width: 320px;
   min-height: 100vh;
-} 
+}
