@@ -1,10 +1,12 @@
+import React from 'react';
+import Section3 from './components/landing/Section3';  
 import './App.css';
 
 function App() {
   return (
-    <>
-      <h1>Petopia</h1>
-    </>
+    <div className="App">
+      <Section3 />
+    </div>
   );
 }
 
