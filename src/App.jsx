@@ -1,13 +1,9 @@
+import React from 'react';
 import './App.css';
-import { SeccionParticipar } from './components/landing/seccion-3-participar';
+import { Layout } from './layout';
 
 function App() {
-  return (
-    <>
-      <h1>Petopia</h1>
-      <SeccionParticipar />
-    </>
-  );
+  return <Layout />;
 }
 
 export default App;
