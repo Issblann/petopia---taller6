@@ -1,7 +1,7 @@
 import { fetchInterceptor } from '../interceptor/interceptor';
 
 const URL_BASE = 'https://api.thecatapi.com/v1/images';
-const GET_CATS = `${URL_BASE}/search?&page=0&limit=25&has_breeds=true&order=ASC`;
+const GET_CATS = `${URL_BASE}/search?&page=0&limit=25&has_breeds=true&order=RANDOM`;
 
 class CatService {
   constructor() {

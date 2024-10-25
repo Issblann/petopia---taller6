@@ -1,7 +1,7 @@
 import { fetchInterceptor } from '../interceptor/interceptor';
 
 export const URL_BASE = 'https://api.thedogapi.com/v1/images';
-const GET_DOGS = `${URL_BASE}/search?&page=0&limit=25&has_breeds=true&order=ASC`;
+const GET_DOGS = `${URL_BASE}/search?&page=0&limit=25&has_breeds=true&order=RANDOM`;
 
 class DogService {
   constructor() {
