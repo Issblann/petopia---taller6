@@ -7,11 +7,11 @@ export const ListPresentation = ({ dogs, cats }) => {
     <section className="list-section">
       <h1> LISTA </h1>
       <ul className="list">
-        {cats.map((cat) => (
-          <li className="card-list--pet" key={cat.id}>
-            <img src={cat.url} alt={cat.id} />
+        {dogs.map((dog) => (
+          <li className="card-list--pet" key={dog.id}>
+            <img src={dog.url} alt={dog.id} />
 
-            {cat.breeds.map((breed) => (
+            {dog.breeds.map((breed) => (
               <div className="card-list__information" key={breed.id}>
                 <h1>{breed.name}</h1>
                 {breed.temperament && (
