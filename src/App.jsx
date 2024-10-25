@@ -1,11 +1,8 @@
 import './App.css';
+import { Layout } from './layout';
 
 function App() {
-  return (
-    <>
-      <h1>Petopia</h1>
-    </>
-  );
+  return <Layout />;
 }
 
 export default App;
