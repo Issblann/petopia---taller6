@@ -1,13 +1,9 @@
 import React from 'react';
-import Section3 from './components/landing/Section3';  
 import './App.css';
+import { Layout } from './layout';
 
 function App() {
-  return (
-    <div className="App">
-      <Section3 />
-    </div>
-  );
+  return <Layout />;
 }
 
 export default App;
