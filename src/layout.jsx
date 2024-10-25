@@ -11,6 +11,7 @@ export const Layout = () => {
   const [dogs, setDogs] = useState([]);
   const [cats, setCats] = useState([]);
 
+  const [cat, setCat] = useState(null);
   useEffect(() => {
     const getApis = async () => {
       const cats = await CatService.getCats();
@@ -18,6 +19,9 @@ export const Layout = () => {
 
       const dogs = await DogService.getDogs();
       setDogs(dogs);
+
+      const cat = await CatService.getCatById('xnzzM6MBI'); //aqui pasamos el id del gato seleccionado (modal)
+      setCat(cat);
     };
 
     getApis();
@@ -25,6 +29,7 @@ export const Layout = () => {
 
   console.log(dogs, 'api perros');
   console.log(cats, 'api gatos');
+  console.log(cat, 'api gato');
   return (
     <>
       <header>

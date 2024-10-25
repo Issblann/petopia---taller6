@@ -17,6 +17,16 @@ class CatService {
       throw new Error(`Status code ${error}`);
     }
   }
+
+  async getCatById(id) {
+    try {
+      const apiKey = import.meta.env.VITE_CAT_API_KEY;
+      const res = await fetchInterceptor(apiKey).get(`${URL_BASE}/${id}`);
+      return res.data;
+    } catch (error) {
+      throw new Error(`Status code ${error}`);
+    }
+  }
 }
 
 export default new CatService();
