@@ -1,13 +1,9 @@
+import React from 'react';
 import './App.css';
-import { NewsLetterSection } from './components/landing/seccion-5-newsletter';
+import { Layout } from './layout';
 
 function App() {
-  return (
-    <>
-      <h1>Petopia</h1>
-      <NewsLetterSection />
-    </>
-  );
+  return <Layout />;
 }
 
 export default App;
