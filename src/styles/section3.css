@@ -1,77 +1,80 @@
+.section-container {
+  width: 100%;
+}
+.text-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  flex-wrap: row;
+  text-align: center;
+  margin-bottom: 30px;
+}
 
+.section-title {
+  font-family: 'Rammetto One', cursive;
+  width: 100%;
+  display: flex;
+  font-weight: 700;
+  font-size: clamp(30px, 5vw, 50px);
+  line-height: 130%;
+  letter-spacing: -0.01em;
+  color: #0e2515;
+  text-align: left;
+}
+
+.section-description {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(16px, 3vw, 19px);
+  line-height: 180%;
+  display: flex;
+  letter-spacing: -0.01em;
+  color: #8c8c8c;
+  width: 85%;
+  text-align: left;
+  font-weight: 400;
+}
+
+.images-container--seccion4 {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.section-image {
+  flex: 1 1 30%;
+  width: 25%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
   .text-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-    flex-wrap: row;
-    text-align: center; 
-    margin-bottom: 30px;
+    flex-direction: column;
+    text-align: center;
   }
-  
+
   .section-title {
-    font-family: 'Rammetto One', cursive;
-    width: 100%;
-    display: flex;
-    font-weight: 700;
-    font-size: clamp(30px, 5vw, 50px);
-    line-height: 130%;
-    letter-spacing: -0.01em;
-    color: #0E2515;
-    text-align: left; 
+    text-align: center;
   }
-  
+
   .section-description {
-    font-family: 'Poppins', sans-serif;
-    font-size: clamp(16px, 3vw, 19px);
-    line-height: 180%;
-    display: flex;
-    letter-spacing: -0.01em;
-    color: #8C8C8C;
-    width: 85%;
-    text-align: left;
-    font-weight: 400;
+    text-align: center;
   }
-  
-  .images-container {
-    display: flex;
+
+  .images-container--seccion4 {
+    flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
-    gap: 15px;
-    flex-wrap: nowrap;
+    align-items: center;
+    gap: 10px;
   }
-  
+
   .section-image {
-    flex: 1 1 30%; 
-    width: 25%;
-    height: auto; 
-    border-radius: 10px;
-    object-fit: cover;
+    width: 100%;
   }
-  
- 
-  @media (max-width: 768px) {
-    .text-container {
-      flex-direction: column;
-      text-align: center; 
-    }
-  
-    .section-title {
-      text-align: center;
-    }
-  
-    .section-description {
-      text-align: center;
-    }
-  
-    .images-container {
-      flex-direction: column; 
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-    }
-  
-    .section-image {
-      width: 100%;
-    }
-  }
+}

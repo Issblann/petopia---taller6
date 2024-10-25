@@ -46,7 +46,7 @@ export const SeccionParticipar = () => {
           ))}
         </aside>
       </div>
-      <figure className="images-container">
+      <figure className="images-container--participar">
         <img src={Image1} alt="image1" />
         <img src={Image2} alt="image2" />
       </figure>
