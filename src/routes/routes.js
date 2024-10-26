@@ -5,7 +5,7 @@ import DogList from './components/Participar';
 const routes = [
   { name: "Gatos", path: "/gatos", component: CatList },
   { name: "Perros", path: "/perros", component: DogList },
-  { name: "Perros", path: "/", component: Inicio }
+  { name: "Inicio", path: "/", component: Inicio }
 ];
 
 export default routes;
