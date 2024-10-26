@@ -34,13 +34,17 @@
 
 .section-adoption__information--card {
   background-color: var(--primary-color-light);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border-radius: 10px;
   max-width: 318px;
+  min-height: 214px;
   padding: 1.5rem 1.2rem;
 }
 
 .section-adoption__information--card h3 {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 500;
   color: var(--text-color);
   margin-bottom: 10px;
