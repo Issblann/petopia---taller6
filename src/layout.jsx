@@ -28,9 +28,9 @@ export const Layout = () => {
     getApis();
   }, []);
 
-  console.log(dogs, 'api perros');
-  console.log(cats, 'api gatos');
-  console.log(cat, 'api gato');
+  // console.log(dogs, 'api perros');
+  // console.log(cats, 'api gatos');
+  // console.log(cat, 'api gato');
   return (
     <>
       <header>
