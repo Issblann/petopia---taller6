@@ -30,7 +30,7 @@
   line-height: 180%;
   display: flex;
   letter-spacing: -0.01em;
-  color: #8c8c8c;
+  color: var(--light-text-color);
   width: 85%;
   text-align: left;
   font-weight: 400;

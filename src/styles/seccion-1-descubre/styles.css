@@ -37,6 +37,8 @@
 .seccion-descubre__information p {
   font-size: 18px;
   text-align: start;
+  width: 90%;
+  color: var(--light-text-color);
 }
 .button-descubre {
   padding: 0.5rem;
