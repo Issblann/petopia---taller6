@@ -1,17 +1,23 @@
 import React from 'react';
 import '../../styles/list/styles.css';
-export const ListPresentation = ({ dogs, cats }) => {
+export const ListPresentation = ({
+  dogs,
+  cats,
+  addFavoriteHandler,
+  favouritesCat,
+}) => {
   console.log(dogs, 'api perros desde lista');
   console.log(cats, 'api gatos desde lista');
+  console.log(favouritesCat, 'favoritos');
   return (
     <section className="list-section">
       <h1> LISTA </h1>
       <ul className="list">
-        {dogs.map((dog) => (
-          <li className="card-list--pet" key={dog.id}>
-            <img src={dog.url} alt={dog.id} />
+        {cats.map((cat) => (
+          <li className="card-list--pet" key={cat.id}>
+            <img src={cat.url} alt={cat.id} />
 
-            {dog.breeds.map((breed) => (
+            {cat.breeds.map((breed) => (
               <div className="card-list__information" key={breed.id}>
                 <h1>{breed.name}</h1>
                 {breed.temperament && (
@@ -28,6 +34,15 @@ export const ListPresentation = ({ dogs, cats }) => {
                 <button className="card-list--ver-detalles">
                   Ver detalles
                 </button>
+
+                {/* <button
+                  className="card-list--ver-detalles"
+                  onClick={() => {
+                    addFavoriteHandler(cat.id), console.log(cat.id);
+                  }}
+                >
+                  Agregar a favoritos
+                </button> */}
               </div>
             ))}
           </li>
