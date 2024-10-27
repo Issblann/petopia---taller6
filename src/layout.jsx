@@ -17,21 +17,12 @@ export const Layout = () => {
       </header>
 
       <main>
-        {/* <section id="inicio">
-          <SeccionInicio />
-        </section>
-        <section id="adopta">
-          <SeccionAdopta />
-        </section> */}
+        {/* <SeccionInicio /> */}
         <Seccion1Descubre />
         <SeccionAdopcion />
-        <section id="participar">
-          <SeccionParticipar />
-          <Section3 />
-        </section>
-        <section id="noticias">
-          <NewsLetterSection />
-        </section>
+        <SeccionParticipar />
+        <Section3 />
+        <NewsLetterSection />
       </main>
     </>
   );

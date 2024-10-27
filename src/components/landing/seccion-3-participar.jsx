@@ -23,7 +23,7 @@ export const SeccionParticipar = () => {
     },
   ];
   return (
-    <section className="section-participar">
+    <section id="participar" className="section-participar">
       <div className="container-information">
         <div className="paragraph-button">
           <p className="community-paragraph">
