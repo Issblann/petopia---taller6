@@ -1,11 +1,19 @@
-import Inicio from './layout';
-import CatList from './components/Adopta';
-import DogList from './components/Participar';
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import CatList from './components/UI/CatList'; 
+import DogList from './components/UI/DogList';
+import Inicio from './src/layout'; 
+import NotFound from './components/NotFound';
 
-const routes = [
-  { name: "Gatos", path: "/gatos", component: CatList },
-  { name: "Perros", path: "/perros", component: DogList },
-  { name: "Inicio", path: "/", component: Inicio }
-];
+const AppRoutes = () => {
+  return (
+    <Routes>
+      <Route path="/" element={<Inicio />} />
+      <Route path="/gatos" element={<CatList />} />
+      <Route path="/perros" element={<DogList />} />
+      <Route path="*" element={<NotFound />} /> {/* Página 404 */}
+    </Routes>
+  );
+};
 
-export default routes;
+export default AppRoutes;
