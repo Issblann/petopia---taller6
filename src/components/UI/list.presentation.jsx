@@ -2,14 +2,20 @@ import React from 'react';
 import '../../styles/list/styles.css';
 export const ListPresentation = ({
   data,
+  location,
   addFavoriteHandler,
-  favoritesCat,
+  favoritesData,
 }) => {
   console.log(data, 'api mascotas');
-  console.log(favoritesCat, 'favoritos');
+  console.log(favoritesData, 'favoritos');
   return (
     <section className="list-section">
-      <h1> LISTA </h1>
+      <h1 className="title-pet">
+        {location.pathname === '/gatos'
+          ? 'GATOS EN ADOPCIÓN'
+          : 'PERROS EN ADOPCIÓN'}
+      </h1>
+
       <ul className="list">
         {data.map((data) => (
           <li className="card-list--pet" key={data.id}>
@@ -32,11 +38,11 @@ export const ListPresentation = ({
                 <button className="card-list--ver-detalles">
                   Ver detalles
                 </button>
-                {/* 
-                <button
+
+                {/* <button
                   className="card-list--ver-detalles"
                   onClick={() => {
-                    addFavoriteHandler(cat.id), console.log(cat.id);
+                    addFavoriteHandler(data.id), console.log(data.id);
                   }}
                 >
                   Agregar a favoritos

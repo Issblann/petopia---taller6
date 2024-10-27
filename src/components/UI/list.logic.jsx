@@ -8,8 +8,7 @@ export const ListDogsAndCats = () => {
   const location = useLocation();
   console.log(location.pathname);
   const [data, setData] = useState([]);
-  const [cats, setCats] = useState([]);
-  const [favoritesCat, setFavoritesCat] = useState([]);
+  const [favoritesData, setFavoritesData] = useState([]);
   useEffect(() => {
     const getApis = async () => {
       if (location.pathname === '/gatos') {
@@ -17,10 +16,13 @@ export const ListDogsAndCats = () => {
         setData(cats);
 
         const favoritesCat = await CatService.getCatFavorites();
-        setFavoritesCat(favoritesCat);
+        setFavoritesData(favoritesCat);
       } else {
         const dogs = await DogService.getDogs();
         setData(dogs);
+
+        const favoritesDog = await CatService.getCatFavorites();
+        setFavoritesData(favoritesDog);
       }
     };
 
@@ -29,12 +31,21 @@ export const ListDogsAndCats = () => {
 
   const addFavoriteHandler = async (id) => {
     try {
-      await CatService.postCatFavorite({
-        image_id: id,
-        sub_id: 'my-user-1234',
-      });
-      const updatedFavorites = await CatService.getCatFavorites();
-      setFavoritesCat(updatedFavorites);
+      if (location.pathname === '/gatos') {
+        await CatService.postCatFavorite({
+          image_id: id,
+          sub_id: 'my-user-1234',
+        });
+        const updatedFavoritesCats = await CatService.getCatFavorites();
+        setFavoritesData(updatedFavoritesCats);
+      } else {
+        await DogService.postDogFavorite({
+          image_id: id,
+          sub_id: 'my-user-1234',
+        });
+        const updatedFavoritesDogs = await DogService.getDogFavorites();
+        setFavoritesData(updatedFavoritesDogs);
+      }
     } catch (error) {
       console.error(
         'Error adding favorite:',
@@ -46,8 +57,9 @@ export const ListDogsAndCats = () => {
   return (
     <ListPresentation
       data={data}
+      location={location}
       addFavoriteHandler={addFavoriteHandler}
-      favoritesCat={favoritesCat}
+      favoritesData={favoritesData}
     />
   );
 };
