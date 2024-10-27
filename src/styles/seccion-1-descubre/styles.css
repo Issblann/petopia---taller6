@@ -1,0 +1,65 @@
+.seccion-descubre {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 1rem;
+}
+
+.seccion-descubre__images {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  width: 100%;
+}
+.seccion-descubre__image-container {
+  height: 100%;
+}
+.seccion-descubre__image-container img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.seccion-descubre__information {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 1rem;
+  width: 92%;
+}
+.seccion-descubre__information h1 {
+  font-size: clamp(2rem, 4.2vw, 3.75rem);
+  font-family: 'Rammetto One', cursive;
+  text-align: start;
+}
+.seccion-descubre__information p {
+  font-size: 18px;
+  text-align: start;
+  width: 90%;
+  color: var(--light-text-color);
+}
+.button-descubre {
+  padding: 0.5rem;
+  width: 100%;
+  text-align: center;
+  max-width: 253px;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .seccion-descubre {
+    flex-direction: column;
+  }
+  .seccion-descubre__information {
+    width: 100%;
+  }
+}
+
+@media (max-width: 468px) {
+  .button-descubre {
+    max-width: none;
+  }
+}

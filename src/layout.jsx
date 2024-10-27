@@ -7,6 +7,8 @@ import { SeccionParticipar } from './components/landing/seccion-3-participar';
 import Section3 from './components/landing/Section3';
 import { NewsLetterSection } from './components/landing/seccion-5-newsletter';
 import { ListDogsAndCats } from './components/UI/list.logic';
+import { Seccion1Descubre } from './components/landing/seccion-1-descubre';
+import { SeccionAdopcion } from './components/landing/seccion-2-adopcion';
 
 export const Layout = () => {
   const [dogs, setDogs] = useState([]);
@@ -38,6 +40,9 @@ export const Layout = () => {
       </header>
 
       <main>
+        {/* <SeccionInicio /> */}
+        <Seccion1Descubre />
+        <SeccionAdopcion />
         <SeccionParticipar />
         <Section3 />
         <NewsLetterSection />
