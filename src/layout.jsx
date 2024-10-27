@@ -6,6 +6,7 @@ import NavBar from './components/landing/NavBar';
 import { SeccionParticipar } from './components/landing/seccion-3-participar';
 import Section3 from './components/landing/Section3';
 import { NewsLetterSection } from './components/landing/seccion-5-newsletter';
+import { Seccion1Descubre } from './components/landing/seccion-1-descubre';
 
 export const Layout = () => {
   return (
@@ -21,6 +22,7 @@ export const Layout = () => {
         <section id="adopta">
           <SeccionAdopta />
         </section> */}
+        <Seccion1Descubre />
         <section id="participar">
           <SeccionParticipar />
           <Section3 />

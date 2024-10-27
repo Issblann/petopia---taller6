@@ -4,6 +4,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  margin-top: 60px;
 }
 
 @media (max-width: 768px) {
