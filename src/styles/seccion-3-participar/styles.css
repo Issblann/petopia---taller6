@@ -1,6 +1,6 @@
 .section-participar {
   width: 100%;
-  padding: 1rem;
+  padding: 2rem;
 }
 
 .container-information {
@@ -67,6 +67,9 @@
   border-radius: 8px;
 }
 @media (max-width: 768px) {
+  .section-participar {
+    padding: 1rem;
+  }
   .container-information {
     flex-direction: column;
   }
