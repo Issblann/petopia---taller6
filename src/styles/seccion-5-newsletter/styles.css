@@ -4,6 +4,7 @@
   display: flex;
   height: auto;
   min-height: 100%;
+  padding: 2rem 2rem 0 2rem;
 }
 .container-image {
   width: 40%;
@@ -23,7 +24,7 @@
   flex-direction: column;
   background-color: #8645a0;
   width: 60%;
-  padding: 5rem 3rem;
+  padding: 3rem;
   justify-content: center;
   text-align: left;
 }
@@ -79,6 +80,7 @@
   .section-newsletter {
     flex-direction: column;
     height: 100%;
+    padding: 0;
   }
   .container-newsletter__information {
     width: 100%;

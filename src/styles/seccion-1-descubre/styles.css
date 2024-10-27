@@ -3,6 +3,7 @@
   justify-content: center;
   width: 100%;
   gap: 1rem;
+  padding: 2rem;
 }
 
 .seccion-descubre__images {
@@ -52,6 +53,7 @@
 @media (max-width: 768px) {
   .seccion-descubre {
     flex-direction: column;
+    padding: 1rem;
   }
   .seccion-descubre__information {
     width: 100%;
