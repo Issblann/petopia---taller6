@@ -1,14 +1,13 @@
 import React from 'react';
 import './App.css';
+import AppRoutes from './routes/routes';
 import { Layout } from './layout';
-import Footer from './components/landing/footer';
 
 function App() {
   return (
-    <>
-      <Layout />
-      <Footer />
-    </>
+    <Layout>
+      <AppRoutes />
+    </Layout>
   );
 }
 

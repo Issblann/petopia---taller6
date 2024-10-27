@@ -1,0 +1,95 @@
+.list-section {
+  width: 100%;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.title-pet {
+  font-size: 30px;
+  font-weight: 600;
+  font-family: 'Rammeto One', cursive;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+.list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+.card-list--pet {
+  width: 100%;
+  height: 450px;
+  background-color: var(--purple-light);
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0;
+}
+.card-list--pet img {
+  width: 100%;
+  height: 50%;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 10px;
+}
+
+.card-list__information {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1rem 0;
+  gap: 5px;
+}
+.card-list__information h1 {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-color);
+  padding: 0 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.card-list__breed-temperament {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, auto));
+  gap: 10px;
+  padding: 1rem;
+}
+.card-list__breed-temperament p {
+  font-size: 14px;
+  width: 100%;
+  padding: 0 0.5rem;
+  background-color: var(--background-color);
+  border-radius: 10px;
+}
+
+.card-list--ver-detalles {
+  width: 80%;
+  border-radius: 10px;
+  height: 40px;
+  border: none;
+  margin: auto;
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  transition: 0.3s ease-in-out;
+  gap: 1rem;
+}
+
+.card-list--ver-detalles:hover {
+  background-color: var(--purple-light);
+  border: 1px solid var(--primary-color);
+  color: var(--text-color);
+}
+
+@media screen and (max-width: 768px) {
+  .list-section {
+    padding: 1rem;
+  }
+}
