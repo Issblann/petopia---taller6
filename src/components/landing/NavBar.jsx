@@ -9,6 +9,12 @@ const NavBar = () => {
     setIsOpen(!isOpen);
   };
 
+  const handleLinkClick = () => {
+    if (isOpen) {
+      toggleMenu();
+    }
+  };
+
   return (
     <nav className="navbar">
       <div className="navbar-content">
@@ -19,11 +25,31 @@ const NavBar = () => {
 
         <div className={`nav-links ${isOpen ? 'open' : ''}`}>
           <ul>
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#">Adopta</a></li>
-            <li><a href="#">Participar</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Sobre Nosotros</a></li>
+            <li>
+              <a href="#inicio" onClick={handleLinkClick}>
+                Inicio
+              </a>
+            </li>
+            <li>
+              <a href="#" onClick={handleLinkClick}>
+                Gatos
+              </a>
+            </li>
+            <li>
+              <a href="#" onClick={handleLinkClick}>
+                Perros
+              </a>
+            </li>
+            <li>
+              <a href="#participar" onClick={handleLinkClick}>
+                Participar
+              </a>
+            </li>
+            <li>
+              <a href="#noticias" onClick={handleLinkClick}>
+                Noticias
+              </a>
+            </li>
           </ul>
         </div>
 
