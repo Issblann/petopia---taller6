@@ -1,7 +1,7 @@
 import { fetchInterceptor } from '../interceptor/interceptor';
 
 const URL_BASE = 'https://api.thecatapi.com/v1/images';
-const URL_BASE_FAVOURITES = 'https://api.thecatapi.com/v1/favourites';
+const URL_BASE_FAVORITES = 'https://api.thecatapi.com/v1/favourites';
 const GET_CATS = `${URL_BASE}/search?&page=0&limit=25&has_breeds=true&order=RANDOM`;
 
 class CatService {
@@ -39,12 +39,12 @@ class CatService {
   //   }
   // }
 
-  async postCatFavourite(favourite) {
+  async postCatFavorite(favorite) {
     try {
       const apiKey = import.meta.env.VITE_CAT_API_KEY;
       const res = await fetchInterceptor(apiKey).post(
-        URL_BASE_FAVOURITES,
-        favourite
+        URL_BASE_FAVORITES,
+        favorite
       );
       return res.data;
     } catch (error) {
@@ -52,10 +52,10 @@ class CatService {
     }
   }
 
-  async getCatFavourites() {
+  async getCatFavorites() {
     try {
       const apiKey = import.meta.env.VITE_CAT_API_KEY;
-      const res = await fetchInterceptor(apiKey).get(URL_BASE_FAVOURITES);
+      const res = await fetchInterceptor(apiKey).get(URL_BASE_FAVORITES);
       return res.data;
     } catch (error) {
       throw new Error(`Status code ${error}`);

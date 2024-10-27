@@ -4,11 +4,11 @@ export const ListPresentation = ({
   dogs,
   cats,
   addFavoriteHandler,
-  favouritesCat,
+  favoritesCat,
 }) => {
   console.log(dogs, 'api perros desde lista');
   console.log(cats, 'api gatos desde lista');
-  console.log(favouritesCat, 'favoritos');
+  console.log(favoritesCat, 'favoritos');
   return (
     <section className="list-section">
       <h1> LISTA </h1>
@@ -34,8 +34,8 @@ export const ListPresentation = ({
                 <button className="card-list--ver-detalles">
                   Ver detalles
                 </button>
-
-                {/* <button
+                {/* 
+                <button
                   className="card-list--ver-detalles"
                   onClick={() => {
                     addFavoriteHandler(cat.id), console.log(cat.id);
