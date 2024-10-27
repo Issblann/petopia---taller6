@@ -6,7 +6,7 @@ import '../../styles/seccion-5-newsletter/styles.css';
 
 export const NewsLetterSection = () => {
   return (
-    <section className="section-newsletter">
+    <section id="noticias" className="section-newsletter">
       <figure className="container-image">
         <img src={Image1} alt="imagen-1-seccion5" />
       </figure>
