@@ -1,13 +1,9 @@
+import React from 'react';
 import './App.css';
-import Footer from './components/landing/footer'
+import { Layout } from './layout';
 
 function App() {
-  return (
-    <>
-      <h1>Petopia</h1>
-      <Footer></Footer>
-    </>
-  );
+  return <Layout />;
 }
 
 export default App;
