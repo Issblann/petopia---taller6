@@ -22,6 +22,7 @@ export const Layout = () => {
         <section id="adopta">
           <SeccionAdopta />
         </section> */}
+        <Seccion1Descubre />
         <section id="participar">
           <SeccionParticipar />
           <Section3 />
