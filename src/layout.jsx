@@ -23,11 +23,9 @@ export const Layout = () => {
         </section> */}
         <section id="participar">
           <SeccionParticipar />
-        </section>
-        <section id="blog">
           <Section3 />
         </section>
-        <section id="sobre-nosotros">
+        <section id="noticias">
           <NewsLetterSection />
         </section>
       </main>
