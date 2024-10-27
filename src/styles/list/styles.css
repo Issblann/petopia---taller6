@@ -6,6 +6,13 @@
   padding: 2rem;
 }
 
+.title-pet {
+  font-size: 30px;
+  font-weight: 600;
+  font-family: 'Rammeto One', cursive;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
 .list {
   list-style: none;
   display: grid;
