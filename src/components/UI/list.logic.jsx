@@ -7,7 +7,6 @@ import NameService from '../../services/names/NameService';
 
 export const ListDogsAndCats = () => {
   const location = useLocation();
-  console.log(location.pathname);
   const [data, setData] = useState([]);
   const [petNames, setPetNames] = useState([]);
   const [favoritesData, setFavoritesData] = useState([]);
