@@ -6,6 +6,30 @@
   padding: 2rem;
 }
 
+.favorites-button-container {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.button-favorites {
+  border-radius: 14px;
+  font-size: 18px;
+  padding: 0.5rem;
+  cursor: pointer;
+  border-color: #8645a0;
+  color: #8645a0;
+  max-width: 379px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.button-favorites:hover {
+  background-color: #e7d7f7;
+  color: #8645a0;
+}
 .title-pet {
   font-size: 30px;
   font-weight: 600;

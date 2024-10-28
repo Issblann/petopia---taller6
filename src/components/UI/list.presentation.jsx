@@ -1,6 +1,10 @@
 import React from 'react';
 import '../../styles/list/styles.css';
-import { PiArrowLeftDuotone, PiArrowRightDuotone } from 'react-icons/pi';
+import {
+  PiArrowLeftDuotone,
+  PiArrowRightDuotone,
+  PiHeartFill,
+} from 'react-icons/pi';
 export const ListPresentation = ({
   data,
   location,
@@ -23,7 +27,12 @@ export const ListPresentation = ({
           ? 'GATOS EN ADOPCIÓN'
           : 'PERROS EN ADOPCIÓN'}
       </h1>
-
+      <div className="favorites-button-container">
+        <button className="button-favorites">
+          <PiHeartFill size={35} color="#8645a0" />
+          Ver favoritos <span>({favoritesData.length})</span>
+        </button>
+      </div>
       <ul className="list">
         {data.map((data, i) => {
           const petName = petNames[i];
