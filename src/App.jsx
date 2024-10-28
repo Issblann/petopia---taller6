@@ -1,12 +1,12 @@
 import './App.css';
-import Footer from './components/landing/footer'
-import Hero from './components/landing/hero';
+import { Layout } from './layout';
+import Footer from './components/landing/footer';
 
 function App() {
   return (
     <>
-      <Hero></Hero>
-      <Footer></Footer>
+      <Layout />
+      <Footer />
     </>
   );
 }

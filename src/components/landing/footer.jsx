@@ -1,8 +1,8 @@
-import "/src/styles/footer/footer.css";
-import Logo from "../../assets/vectors/logo.svg"
-import Instagram from "../../assets/vectors/instagram.svg";
-import Twitter from "../../assets/vectors/twitter.svg";
-import Linkedin from "../../assets/vectors/linkedin.svg";
+import '/src/styles/footer/footer.css';
+import Logo from '../../assets/vectors/logo.svg';
+import Instagram from '../../assets/vectors/instagram.svg';
+import Twitter from '../../assets/vectors/twitter.svg';
+import Linkedin from '../../assets/vectors/linkedin.svg';
 
 function Footer() {
   return (
@@ -10,6 +10,7 @@ function Footer() {
       <div className="footer-container">
         <div className="footer-column footer-column-large">
           <img src={Logo} alt="logo" />
+          <p>Petopia</p>
         </div>
         <div className="footer-column">
           <h3>Adopt</h3>

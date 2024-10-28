@@ -1,0 +1,110 @@
+.section-newsletter {
+  width: 100%;
+  color: white;
+  display: flex;
+  height: auto;
+  min-height: 100%;
+  padding: 2rem 2rem 0 2rem;
+}
+.container-image {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.container-newsletter__information {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  background-color: #8645a0;
+  width: 60%;
+  padding: 3rem;
+  justify-content: center;
+  text-align: left;
+}
+.container-newsletter__information h2 {
+  font-size: clamp(24px, 5vw, 32px);
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+.container-newsletter__information p {
+  margin-bottom: 3rem;
+  color: rgba(248, 248, 248, 0.8);
+  font-weight: 400;
+}
+.newsletter-form {
+  display: flex;
+  gap: 1rem;
+}
+.input-container {
+  display: flex;
+  padding: 0.5rem 1rem;
+  gap: 10px;
+  border-radius: 10px;
+  align-items: center;
+  width: 70%;
+  height: 100%;
+  background-color: #8645a0;
+  border-color: #f8f8f8;
+}
+.input-container input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  color: #f8f8f8;
+  border-radius: 5px;
+  padding: 0.5rem;
+  background: transparent;
+}
+.input-container input:focus {
+  outline: none;
+}
+.input-container input::placeholder {
+  color: rgba(248, 248, 248, 0.5);
+}
+.newsletter-form button {
+  width: 30%;
+  border: none;
+  border-radius: 12px;
+  padding: 0.5rem;
+  background-color: #f8f8f8;
+  color: #8645a0;
+}
+@media (max-width: 768px) {
+  .section-newsletter {
+    flex-direction: column;
+    height: 100%;
+    padding: 0;
+  }
+  .container-newsletter__information {
+    width: 100%;
+    max-height: none;
+    padding: 1rem;
+  }
+  .container-newsletter__information p {
+    margin-bottom: 1rem;
+  }
+  .container-image {
+    width: 100%;
+  }
+  .container-image img {
+    width: 100%;
+  }
+  .newsletter-form {
+    flex-direction: column;
+    width: 100%;
+  }
+  .newsletter-form button {
+    width: 100%;
+    height: 60px;
+  }
+  .input-container {
+    width: 100%;
+  }
+}
