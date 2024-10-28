@@ -3,26 +3,43 @@ import { ListPresentation } from './list.presentation';
 import CatService from '../../services/cat/CatService';
 import DogService from '../../services/dog/DogService';
 import { useLocation } from 'react-router-dom';
+import NameService from '../../services/names/NameService';
 
 export const ListDogsAndCats = () => {
   const location = useLocation();
   console.log(location.pathname);
   const [data, setData] = useState([]);
+  const [petNames, setPetNames] = useState([]);
   const [favoritesData, setFavoritesData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
     const getApis = async () => {
-      if (location.pathname === '/gatos') {
-        const cats = await CatService.getCats();
-        setData(cats);
+      setData([]);
+      setPetNames([]);
+      setFavoritesData([]);
+      setIsLoading(true);
+      try {
+        if (location.pathname === '/gatos') {
+          const cats = await CatService.getCats();
+          setData(cats);
 
-        const favoritesCat = await CatService.getCatFavorites();
-        setFavoritesData(favoritesCat);
-      } else {
-        const dogs = await DogService.getDogs();
-        setData(dogs);
+          const favoritesCat = await CatService.getCatFavorites();
+          setFavoritesData(favoritesCat);
+        } else if (location.pathname === '/perros') {
+          const dogs = await DogService.getDogs();
+          setData(dogs);
 
-        const favoritesDog = await CatService.getCatFavorites();
-        setFavoritesData(favoritesDog);
+          const favoritesDog = await DogService.getDogFavorites();
+          setFavoritesData(favoritesDog);
+        }
+
+        const names = await NameService.getNames();
+        setPetNames(names);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -60,6 +77,8 @@ export const ListDogsAndCats = () => {
       location={location}
       addFavoriteHandler={addFavoriteHandler}
       favoritesData={favoritesData}
+      petNames={petNames}
+      isLoading={isLoading}
     />
   );
 };

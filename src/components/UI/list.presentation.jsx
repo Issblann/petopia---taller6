@@ -5,9 +5,16 @@ export const ListPresentation = ({
   location,
   addFavoriteHandler,
   favoritesData,
+  petNames,
+  isLoading,
 }) => {
-  console.log(data, 'api mascotas');
-  console.log(favoritesData, 'favoritos');
+  if (isLoading) {
+    return (
+      <div className="loading">
+        <p>Cargando datos de mascotas...</p>
+      </div>
+    );
+  }
   return (
     <section className="list-section">
       <h1 className="title-pet">
@@ -17,29 +24,33 @@ export const ListPresentation = ({
       </h1>
 
       <ul className="list">
-        {data.map((data) => (
-          <li className="card-list--pet" key={data.id}>
-            <img src={data.url} alt={data.id} />
+        {data.map((data, i) => {
+          const petName = petNames[i];
+          return (
+            <li className="card-list--pet" key={data.id}>
+              <img src={data.url} alt={data.id} loading="lazy" />
 
-            {data.breeds.map((breed) => (
-              <div className="card-list__information" key={breed.id}>
-                <h1>{breed.name}</h1>
-                {breed.temperament && (
-                  <div className="card-list__breed-temperament">
-                    {breed.temperament
-                      .split(',')
-                      .slice(0, 6)
-                      .map((temperament) => (
-                        <p key={temperament}>{temperament}</p>
-                      ))}
-                  </div>
-                )}
+              {data.breeds.map((breed) => (
+                <div className="card-list__information" key={breed.id}>
+                  {data ? <h1>{petName?.firstName}</h1> : ''}
+                  <p>{breed.name}</p>
 
-                <button className="card-list--ver-detalles">
-                  Ver detalles
-                </button>
+                  {breed.temperament && (
+                    <div className="card-list__breed-temperament">
+                      {breed.temperament
+                        .split(',')
+                        .slice(0, 6)
+                        .map((temperament) => (
+                          <p key={temperament}>{temperament}</p>
+                        ))}
+                    </div>
+                  )}
 
-                {/* <button
+                  <button className="card-list--ver-detalles">
+                    Ver detalles
+                  </button>
+
+                  {/* <button
                   className="card-list--ver-detalles"
                   onClick={() => {
                     addFavoriteHandler(data.id), console.log(data.id);
@@ -47,10 +58,11 @@ export const ListPresentation = ({
                 >
                   Agregar a favoritos
                 </button> */}
-              </div>
-            ))}
-          </li>
-        ))}
+                </div>
+              ))}
+            </li>
+          );
+        })}
       </ul>
     </section>
   );
