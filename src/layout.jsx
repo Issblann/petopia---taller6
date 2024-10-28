@@ -1,4 +1,3 @@
-import React from 'react';
 import './styles/layout/styles.css';
 import NavBar from './components/landing/NavBar';
 //import { SeccionInicio } from './components/landing/SeccionInicio';
@@ -8,6 +7,7 @@ import Section3 from './components/landing/Section3';
 import { NewsLetterSection } from './components/landing/seccion-5-newsletter';
 import { Seccion1Descubre } from './components/landing/seccion-1-descubre';
 import { SeccionAdopcion } from './components/landing/seccion-2-adopcion';
+import Hero from './components/landing/hero';
 
 export const Layout = () => {
   return (
@@ -18,6 +18,7 @@ export const Layout = () => {
 
       <main>
         {/* <SeccionInicio /> */}
+        <Hero/>
         <Seccion1Descubre />
         <SeccionAdopcion />
         <SeccionParticipar />
