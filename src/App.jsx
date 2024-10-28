@@ -1,10 +1,11 @@
 import './App.css';
 import Footer from './components/landing/footer'
+import Hero from './components/landing/hero';
 
 function App() {
   return (
     <>
-      <h1>Petopia</h1>
+      <Hero></Hero>
       <Footer></Footer>
     </>
   );

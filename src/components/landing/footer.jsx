@@ -1,4 +1,3 @@
-import React from "react";
 import "/src/styles/footer/footer.css";
 import Logo from "../../assets/vectors/logo.svg"
 import Instagram from "../../assets/vectors/instagram.svg";

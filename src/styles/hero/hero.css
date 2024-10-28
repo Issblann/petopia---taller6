@@ -1,0 +1,225 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Rammetto+One&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+}
+
+.hero-container {
+  display: flex;
+  justify-content: center;
+  padding: 50px 0px;
+  background-color: #f9f9f9;
+  width: 100%;
+  flex-direction: row;
+}
+
+.left-column {
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-image: url(../../assets/images/image_hero2.png);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.left-column::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero-title,
+.hero-text,
+.hero-buttons {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-title {
+  font-size: 3rem;
+  color: #0e2515;
+  margin-bottom: 20px;
+  font-family: "Rammetto One", cursive;
+}
+
+.hero-text {
+  font-size: 1.2rem;
+  color: #0e2515;
+  margin-bottom: 30px;
+}
+
+.hero-buttons {
+  max-width: 500px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  padding: 20px;
+  gap: 20px;
+}
+
+.hero-buttons p {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+  text-align: center;
+}
+
+.hero-btn-container {
+  display: flex;
+  gap: 10px;
+}
+
+.hero-btn {
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border: solid #8645a0 3px;
+  padding: 5px 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.hero-btn:hover {
+  background-color: #e7d7f7;
+}
+
+.icon {
+  width: 60px;
+}
+
+.right-column {
+  width: 50%;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  position: relative;
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+}
+
+.mascotas-img {
+  width: 100%;
+  height: 100vh;
+}
+
+.vector-bg {
+  position: absolute;
+  top: -45px;
+  right: -80px;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+@media (max-width: 1024px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-text {
+    font-size: 1rem;
+  }
+
+  .hero-btn {
+    width: 150px;
+    padding: 5px 20px;
+  }
+
+  .icon {
+    width: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-container {
+    flex-direction: column;
+    padding: 30px;
+  }
+
+  .left-column,
+  .right-column {
+    width: 100%;
+    height: auto;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .hero-text {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .hero-buttons {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .hero-btn-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .hero-btn {
+    width: 100%;
+  }
+
+  .image-container {
+    height: auto;
+  }
+
+  .mascotas-img {
+    width: 100%;
+    height: auto;
+  }
+
+  .vector-bg {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.8rem;
+  }
+
+  .hero-text {
+    font-size: 0.9rem;
+  }
+
+  .hero-buttons p {
+    font-size: 1rem;
+  }
+
+  .hero-btn {
+    padding: 5px 15px;
+    font-size: 0.9rem;
+  }
+
+  .icon {
+    width: 40px;
+  }
+}
