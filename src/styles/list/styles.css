@@ -103,6 +103,33 @@
   align-items: center;
   height: 100vh;
 }
+
+.pagination-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.pagination-list p {
+  font-size: 24px;
+  color: var(--text-color);
+}
+
+.arrow-container {
+  display: flex;
+  background-color: var(--purple-light);
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 0.2rem 1rem;
+  border-radius: 10px;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
 @media screen and (max-width: 768px) {
   .list-section {
     padding: 1rem;

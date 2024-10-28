@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../styles/list/styles.css';
+import { PiArrowLeftDuotone, PiArrowRightDuotone } from 'react-icons/pi';
 export const ListPresentation = ({
   data,
   location,
@@ -64,6 +65,17 @@ export const ListPresentation = ({
           );
         })}
       </ul>
+
+      <div className="pagination-list">
+        <div className="arrow-container disabled">
+          <PiArrowLeftDuotone size={25} color="#8645a0" />
+        </div>
+
+        <p>1</p>
+        <div className="arrow-container">
+          <PiArrowRightDuotone size={25} color="#8645a0" />
+        </div>
+      </div>
     </section>
   );
 };
