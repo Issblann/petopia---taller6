@@ -87,6 +87,7 @@
   }
   .section-adoption__information--cards {
     grid-template-columns: 1fr;
+    width: 100%;
   }
   .section-adoption__information--card {
     max-width: 100%;
