@@ -71,14 +71,14 @@ export const ListPresentation = ({
                       Ver detalles
                     </button>
 
-                    <button
+                    {/* <button
                       className="card-list--ver-detalles"
                       onClick={() => {
                         addFavoriteHandler(data.id), console.log(data.id);
                       }}
                     >
                       Agregar a favoritos
-                    </button>
+                    </button> */}
                   </div>
                 ))}
               </li>
