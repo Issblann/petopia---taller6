@@ -30,7 +30,7 @@ export const Seccion1Descubre = () => {
     },
   ];
   return (
-    <section id="inicio" className="seccion-descubre">
+    <section id="/" className="seccion-descubre">
       <figure className="seccion-descubre__images">
         {IMAGES.map((image) => (
           <div className="seccion-descubre__image-container" key={image.id}>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../../styles/navbar.css';
 import logo from '../../assets/logo.svg';
+import { Link } from 'react-router-dom';
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,19 +27,19 @@ const NavBar = () => {
         <div className={`nav-links ${isOpen ? 'open' : ''}`}>
           <ul>
             <li>
-              <a href="#inicio" onClick={handleLinkClick}>
+              <Link to="/" onClick={handleLinkClick}>
                 Inicio
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" onClick={handleLinkClick}>
+              <Link to="/gatos" onClick={handleLinkClick}>
                 Gatos
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" onClick={handleLinkClick}>
+              <Link to="/perros" onClick={handleLinkClick}>
                 Perros
-              </a>
+              </Link>
             </li>
             <li>
               <a href="#participar" onClick={handleLinkClick}>
