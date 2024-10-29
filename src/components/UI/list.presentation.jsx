@@ -6,20 +6,30 @@ import {
   PiHeartFill,
 } from 'react-icons/pi';
 export const ListPresentation = ({
-  data,
+  cats,
+  dogs,
   location,
   addFavoriteHandler,
-  favoritesData,
+  handlePreviousPage,
+  handleNextPage,
+  favoritesCats,
+  favoritesDogs,
   petNames,
-  isLoading,
+  currentPage,
+  status,
 }) => {
-  if (isLoading) {
+  const isCatsPage = location.pathname === '/gatos';
+  const data = isCatsPage ? cats : dogs;
+  const favoritesData = isCatsPage ? favoritesCats : favoritesDogs;
+
+  if (status === 'loading') {
     return (
       <div className="loading">
         <p>Cargando datos de mascotas...</p>
       </div>
     );
   }
+
   return (
     <section className="list-section">
       <h1 className="title-pet">
@@ -34,56 +44,60 @@ export const ListPresentation = ({
         </button>
       </div>
       <ul className="list">
-        {data.map((data, i) => {
-          const petName = petNames[i];
-          return (
-            <li className="card-list--pet" key={data.id}>
-              <img src={data.url} alt={data.id} loading="lazy" />
+        {data &&
+          data.map((data, i) => {
+            const petName = petNames[i];
+            return (
+              <li className="card-list--pet" key={data.id}>
+                <img src={data.url} alt={data.id} loading="lazy" />
 
-              {data.breeds.map((breed) => (
-                <div className="card-list__information" key={breed.id}>
-                  {data ? <h1>{petName?.firstName}</h1> : ''}
-                  <p>{breed.name}</p>
+                {data.breeds.map((breed) => (
+                  <div className="card-list__information" key={breed.id}>
+                    {data ? <h1>{petName?.firstName}</h1> : ''}
+                    <p>{breed.name}</p>
 
-                  {breed.temperament && (
-                    <div className="card-list__breed-temperament">
-                      {breed.temperament
-                        .split(',')
-                        .slice(0, 6)
-                        .map((temperament) => (
-                          <p key={temperament}>{temperament}</p>
-                        ))}
-                    </div>
-                  )}
+                    {breed.temperament && (
+                      <div className="card-list__breed-temperament">
+                        {breed.temperament
+                          .split(',')
+                          .slice(0, 6)
+                          .map((temperament) => (
+                            <p key={temperament}>{temperament}</p>
+                          ))}
+                      </div>
+                    )}
 
-                  <button className="card-list--ver-detalles">
-                    Ver detalles
-                  </button>
+                    <button className="card-list--ver-detalles">
+                      Ver detalles
+                    </button>
 
-                  {/* <button
-                  className="card-list--ver-detalles"
-                  onClick={() => {
-                    addFavoriteHandler(data.id), console.log(data.id);
-                  }}
-                >
-                  Agregar a favoritos
-                </button> */}
-                </div>
-              ))}
-            </li>
-          );
-        })}
+                    <button
+                      className="card-list--ver-detalles"
+                      onClick={() => {
+                        addFavoriteHandler(data.id), console.log(data.id);
+                      }}
+                    >
+                      Agregar a favoritos
+                    </button>
+                  </div>
+                ))}
+              </li>
+            );
+          })}
       </ul>
 
       <div className="pagination-list">
-        <div className="arrow-container disabled">
+        <button
+          onClick={() => handlePreviousPage()}
+          className={`arrow-container ${currentPage === 0 ? 'disabled' : ''}`}
+        >
           <PiArrowLeftDuotone size={25} color="#8645a0" />
-        </div>
+        </button>
 
-        <p>1</p>
-        <div className="arrow-container">
+        <p>{currentPage === 0 ? 'Principal' : currentPage}</p>
+        <button className="arrow-container" onClick={() => handleNextPage()}>
           <PiArrowRightDuotone size={25} color="#8645a0" />
-        </div>
+        </button>
       </div>
     </section>
   );

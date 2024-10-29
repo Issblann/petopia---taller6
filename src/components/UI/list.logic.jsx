@@ -1,66 +1,56 @@
 import React, { useEffect, useState } from 'react';
 import { ListPresentation } from './list.presentation';
-import CatService from '../../services/cat/CatService';
-import DogService from '../../services/dog/DogService';
 import { useLocation } from 'react-router-dom';
-import NameService from '../../services/names/NameService';
+import { useDispatch, useSelector } from 'react-redux';
+import { thunks } from '../../redux/slice/animals/thunks';
+import { actions } from '../../redux/slice/animals/slice';
 
 export const ListDogsAndCats = () => {
+  const dispatch = useDispatch();
   const location = useLocation();
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
   const [petNames, setPetNames] = useState([]);
-  const [favoritesData, setFavoritesData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
 
+  const { cats, dogs, currentPage, favoritesCats, favoritesDogs, status } =
+    useSelector((state) => state.animals);
   useEffect(() => {
-    const getApis = async () => {
-      setData([]);
-      setPetNames([]);
-      setFavoritesData([]);
-      setIsLoading(true);
-      try {
-        if (location.pathname === '/gatos') {
-          const cats = await CatService.getCats();
-          setData(cats);
+    if (location.pathname === '/gatos') {
+      dispatch(thunks.fetchCats({ page: currentPage }));
+      dispatch(thunks.fetchFavoritesCats());
+    } else if (location.pathname === '/perros') {
+      dispatch(thunks.fetchDogs({ page: currentPage }));
+      dispatch(thunks.fetchFavoritesDogs());
+    }
+  }, [currentPage, location.pathname]);
 
-          const favoritesCat = await CatService.getCatFavorites();
-          setFavoritesData(favoritesCat);
-        } else if (location.pathname === '/perros') {
-          const dogs = await DogService.getDogs();
-          setData(dogs);
+  console.log(favoritesCats, 'favoritesCats desde redux');
+  console.log(favoritesDogs, 'favoritesDogs desde redux');
+  const handleNextPage = async () => {
+    dispatch(actions.setPage(currentPage + 1));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
-          const favoritesDog = await DogService.getDogFavorites();
-          setFavoritesData(favoritesDog);
-        }
+  const handlePreviousPage = () => {
+    if (currentPage > 0) dispatch(actions.setPage(currentPage - 1));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
-        const names = await NameService.getNames();
-        setPetNames(names);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    getApis();
-  }, [location.pathname]);
-
-  const addFavoriteHandler = async (id) => {
+  const addFavoriteHandler = (id) => {
     try {
       if (location.pathname === '/gatos') {
-        await CatService.postCatFavorite({
-          image_id: id,
-          sub_id: 'my-user-1234',
-        });
-        const updatedFavoritesCats = await CatService.getCatFavorites();
-        setFavoritesData(updatedFavoritesCats);
-      } else {
-        await DogService.postDogFavorite({
-          image_id: id,
-          sub_id: 'my-user-1234',
-        });
-        const updatedFavoritesDogs = await DogService.getDogFavorites();
-        setFavoritesData(updatedFavoritesDogs);
+        dispatch(
+          thunks.postFavoriteCat({
+            favorite: { image_id: id, sub_id: 'my-user-1234' },
+          })
+        );
+        dispatch(thunks.fetchFavoritesCats());
+      } else if (location.pathname === '/perros') {
+        dispatch(
+          thunks.postFavoriteDog({
+            favorite: { image_id: id, sub_id: 'my-user-1234' },
+          })
+        );
+        dispatch(thunks.fetchFavoritesDogs());
       }
     } catch (error) {
       console.error(
@@ -72,12 +62,17 @@ export const ListDogsAndCats = () => {
 
   return (
     <ListPresentation
-      data={data}
-      location={location}
+      cats={cats}
+      dogs={dogs}
+      status={status}
+      handlePreviousPage={handlePreviousPage}
+      handleNextPage={handleNextPage}
       addFavoriteHandler={addFavoriteHandler}
-      favoritesData={favoritesData}
+      location={location}
+      currentPage={currentPage}
+      favoritesCats={favoritesCats}
+      favoritesDogs={favoritesDogs}
       petNames={petNames}
-      isLoading={isLoading}
     />
   );
 };
