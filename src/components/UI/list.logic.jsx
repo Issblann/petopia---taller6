@@ -4,15 +4,17 @@ import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { thunks } from '../../redux/slice/animals/thunks';
 import { actions } from '../../redux/slice/animals/slice';
+import { Modal } from '../../components/UI/modal';
 
 export const ListDogsAndCats = () => {
   const dispatch = useDispatch();
   const location = useLocation();
-  // const [data, setData] = useState([]);
-  const [petNames, setPetNames] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedPet, setSelectedPet] = useState(null);
 
   const { cats, dogs, currentPage, favoritesCats, favoritesDogs, status } =
     useSelector((state) => state.animals);
+
   useEffect(() => {
     if (location.pathname === '/gatos') {
       dispatch(thunks.fetchCats({ page: currentPage }));
@@ -23,8 +25,6 @@ export const ListDogsAndCats = () => {
     }
   }, [currentPage, location.pathname]);
 
-  console.log(favoritesCats, 'favoritesCats desde redux');
-  console.log(favoritesDogs, 'favoritesDogs desde redux');
   const handleNextPage = async () => {
     dispatch(actions.setPage(currentPage + 1));
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -36,43 +36,35 @@ export const ListDogsAndCats = () => {
   };
 
   const addFavoriteHandler = (id) => {
-    try {
-      if (location.pathname === '/gatos') {
-        dispatch(
-          thunks.postFavoriteCat({
-            favorite: { image_id: id, sub_id: 'my-user-1234' },
-          })
-        );
-        dispatch(thunks.fetchFavoritesCats());
-      } else if (location.pathname === '/perros') {
-        dispatch(
-          thunks.postFavoriteDog({
-            favorite: { image_id: id, sub_id: 'my-user-1234' },
-          })
-        );
-        dispatch(thunks.fetchFavoritesDogs());
-      }
-    } catch (error) {
-      console.error(
-        'Error adding favorite:',
-        error.response?.data || error.message
-      );
-    }
+    // Lógica para agregar favoritos
+  };
+
+  const openModal = (pet) => {
+    setSelectedPet(pet);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedPet(null);
   };
 
   return (
-    <ListPresentation
-      cats={cats}
-      dogs={dogs}
-      status={status}
-      handlePreviousPage={handlePreviousPage}
-      handleNextPage={handleNextPage}
-      addFavoriteHandler={addFavoriteHandler}
-      location={location}
-      currentPage={currentPage}
-      favoritesCats={favoritesCats}
-      favoritesDogs={favoritesDogs}
-      petNames={petNames}
-    />
+    <>
+      <ListPresentation
+        cats={cats}
+        dogs={dogs}
+        status={status}
+        handlePreviousPage={handlePreviousPage}
+        handleNextPage={handleNextPage}
+        addFavoriteHandler={addFavoriteHandler}
+        location={location}
+        currentPage={currentPage}
+        favoritesCats={favoritesCats}
+        favoritesDogs={favoritesDogs}
+        openModal={openModal} // Pasar la función para abrir el modal
+      />
+      <Modal isOpen={isModalOpen} onClose={closeModal} petDetails={selectedPet} />
+    </>
   );
 };

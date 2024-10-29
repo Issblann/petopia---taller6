@@ -1,22 +1,19 @@
 import React from 'react';
 import '../../styles/list/styles.css';
-import {
-  PiArrowLeftDuotone,
-  PiArrowRightDuotone,
-  PiHeartFill,
-} from 'react-icons/pi';
+import { PiArrowLeftDuotone, PiArrowRightDuotone, PiHeartFill } from 'react-icons/pi';
+
 export const ListPresentation = ({
   cats,
   dogs,
   location,
-  addFavoriteHandler,
   handlePreviousPage,
   handleNextPage,
   favoritesCats,
   favoritesDogs,
-  petNames,
   currentPage,
   status,
+  openModal,
+  
 }) => {
   const isCatsPage = location.pathname === '/gatos';
   const data = isCatsPage ? cats : dogs;
@@ -33,9 +30,7 @@ export const ListPresentation = ({
   return (
     <section className="list-section">
       <h1 className="title-pet">
-        {location.pathname === '/gatos'
-          ? 'GATOS EN ADOPCIÓN'
-          : 'PERROS EN ADOPCIÓN'}
+        {location.pathname === '/gatos' ? 'GATOS EN ADOPCIÓN' : 'PERROS EN ADOPCIÓN'}
       </h1>
       <div className="favorites-button-container">
         <button className="button-favorites">
@@ -45,45 +40,36 @@ export const ListPresentation = ({
       </div>
       <ul className="list">
         {data &&
-          data.map((data, i) => {
-            const petName = petNames[i];
-            return (
-              <li className="card-list--pet" key={data.id}>
-                <img src={data.url} alt={data.id} loading="lazy" />
+          data.map((data) => (
+            <li className="card-list--pet" key={data.id}>
+              <img src={data.url} alt={data.id} loading="lazy" />
 
-                {data.breeds.map((breed) => (
-                  <div className="card-list__information" key={breed.id}>
-                    {data ? <h1>{petName?.firstName}</h1> : ''}
-                    <p>{breed.name}</p>
+              {data.breeds.map((breed) => (
+                <div className="card-list__information" key={breed.id}>
+                  <h1>{data.name}</h1> {/* Asegúrate de tener un nombre para la mascota */}
+                  <p>{breed.name}</p>
 
-                    {breed.temperament && (
-                      <div className="card-list__breed-temperament">
-                        {breed.temperament
-                          .split(',')
-                          .slice(0, 6)
-                          .map((temperament) => (
-                            <p key={temperament}>{temperament}</p>
-                          ))}
-                      </div>
-                    )}
+                  {breed.temperament && (
+                    <div className="card-list__breed-temperament">
+                      {breed.temperament
+                        .split(',')
+                        .slice(0, 6)
+                        .map((temperament) => (
+                          <p key={temperament}>{temperament}</p>
+                        ))}
+                    </div>
+                  )}
 
-                    <button className="card-list--ver-detalles">
-                      Ver detalles
-                    </button>
-
-                    {/* <button
-                      className="card-list--ver-detalles"
-                      onClick={() => {
-                        addFavoriteHandler(data.id), console.log(data.id);
-                      }}
-                    >
-                      Agregar a favoritos
-                    </button> */}
-                  </div>
-                ))}
-              </li>
-            );
-          })}
+                  <button
+                    className="card-list--ver-detalles"
+                    onClick={() => openModal({ url: data.url, name: data.name, breed: breed.name, temperament: breed.temperament })} // Pasar detalles de la mascota
+                  >
+                    Ver detalles
+                  </button>
+                </div>
+              ))}
+            </li>
+          ))}
       </ul>
 
       <div className="pagination-list">
