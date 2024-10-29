@@ -8,7 +8,6 @@ import { actions } from '../../redux/slice/animals/slice';
 export const ListDogsAndCats = () => {
   const dispatch = useDispatch();
   const location = useLocation();
-  // const [data, setData] = useState([]);
   const [petNames, setPetNames] = useState([]);
 
   const { cats, dogs, currentPage, favoritesCats, favoritesDogs, status } =
@@ -23,8 +22,6 @@ export const ListDogsAndCats = () => {
     }
   }, [currentPage, location.pathname]);
 
-  console.log(favoritesCats, 'favoritesCats desde redux');
-  console.log(favoritesDogs, 'favoritesDogs desde redux');
   const handleNextPage = async () => {
     dispatch(actions.setPage(currentPage + 1));
     window.scrollTo({ top: 0, behavior: 'smooth' });
