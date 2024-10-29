@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../../styles/list/styles.css';
 import { PiArrowLeftDuotone, PiArrowRightDuotone, PiHeartFill } from 'react-icons/pi';
 
@@ -13,11 +14,16 @@ export const ListPresentation = ({
   currentPage,
   status,
   openModal,
-  
 }) => {
+  const navigate = useNavigate();
   const isCatsPage = location.pathname === '/gatos';
   const data = isCatsPage ? cats : dogs;
   const favoritesData = isCatsPage ? favoritesCats : favoritesDogs;
+
+  const handleRedirect = () => {
+    const path = isCatsPage ? '/gatos/favoritos' : '/perros/favoritos';
+    navigate(path);
+  };
 
   if (status === 'loading') {
     return (
@@ -26,12 +32,13 @@ export const ListPresentation = ({
       </div>
     );
   }
-  if (data.length === 0)
+  if (data.length === 0) {
     return (
       <div className="loading">
         <p>No hay datos de mascotas</p>
       </div>
     );
+  }
 
   return (
     <section className="list-section">
@@ -39,7 +46,7 @@ export const ListPresentation = ({
         {location.pathname === '/gatos' ? 'GATOS EN ADOPCIÓN' : 'PERROS EN ADOPCIÓN'}
       </h1>
       <div className="favorites-button-container">
-        <button className="button-favorites">
+        <button className="button-favorites" onClick={handleRedirect}>
           <PiHeartFill size={35} color="#8645a0" />
           Ver favoritos <span>({favoritesData.length})</span>
         </button>
@@ -52,7 +59,7 @@ export const ListPresentation = ({
 
               {data.breeds.map((breed) => (
                 <div className="card-list__information" key={breed.id}>
-                  <h1>{data.name}</h1> {/* Asegúrate de tener un nombre para la mascota */}
+                  <h1>{data.name}</h1>
                   <p>{breed.name}</p>
 
                   {breed.temperament && (
@@ -68,7 +75,7 @@ export const ListPresentation = ({
 
                   <button
                     className="card-list--ver-detalles"
-                    onClick={() => openModal({ url: data.url, name: data.name, breed: breed.name, temperament: breed.temperament })} // Pasar detalles de la mascota
+                    onClick={() => openModal({ url: data.url, name: data.name, breed: breed.name, temperament: breed.temperament })}
                   >
                     Ver detalles
                   </button>
