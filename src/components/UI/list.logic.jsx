@@ -11,6 +11,7 @@ export const ListDogsAndCats = () => {
   const location = useLocation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPet, setSelectedPet] = useState(null);
+  const [petNames, setPetNames] = useState([]);
 
   const { cats, dogs, currentPage, favoritesCats, favoritesDogs, status } =
     useSelector((state) => state.animals);

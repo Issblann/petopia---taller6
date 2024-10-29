@@ -12,7 +12,7 @@ const animalsSlice = createSlice({
         state.status = 'loading';
       })
       .addCase(thunks.fetchCats.fulfilled, (state, action) => {
-        state.status = 'success';
+        state.status = 'succeeded';
         state.cats = action.payload;
       })
       .addCase(thunks.fetchCats.rejected, (state, action) => {

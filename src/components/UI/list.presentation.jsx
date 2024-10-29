@@ -26,6 +26,12 @@ export const ListPresentation = ({
       </div>
     );
   }
+  if (data.length === 0)
+    return (
+      <div className="loading">
+        <p>No hay datos de mascotas</p>
+      </div>
+    );
 
   return (
     <section className="list-section">
