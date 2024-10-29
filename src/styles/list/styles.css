@@ -4,8 +4,33 @@
   flex: 1;
   flex-direction: column;
   padding: 2rem;
+  height: 100vh;
 }
 
+.favorites-button-container {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.button-favorites {
+  border-radius: 14px;
+  font-size: 18px;
+  padding: 0.5rem;
+  cursor: pointer;
+  border-color: #8645a0;
+  color: #8645a0;
+  max-width: 379px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.button-favorites:hover {
+  background-color: #e7d7f7;
+  color: #8645a0;
+}
 .title-pet {
   font-size: 30px;
   font-weight: 600;
@@ -31,7 +56,7 @@
 }
 .card-list--pet img {
   width: 100%;
-  height: 50%;
+  height: 48%;
   object-fit: cover;
   object-position: top;
   border-radius: 10px;
@@ -41,33 +66,42 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 1rem 0;
-  gap: 5px;
 }
+
 .card-list__information h1 {
   font-size: 20px;
   font-weight: 600;
+  font-family: 'Rammeto One', cursive;
+  color: var(--primary-color);
+  padding: 0 1rem;
+}
+
+.card-list__information p {
+  font-size: 14px;
   color: var(--text-color);
   padding: 0 1rem;
+  max-width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 100%;
 }
 
 .card-list__breed-temperament {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, auto));
+  grid-template-columns: repeat(2, minmax(0, 200px));
   gap: 10px;
-  padding: 1rem;
+  padding: 0.5rem;
+  min-height: 100px;
+  text-align: center;
 }
 .card-list__breed-temperament p {
   font-size: 14px;
   width: 100%;
+  max-height: 25px;
   padding: 0 0.5rem;
   background-color: var(--background-color);
-  border-radius: 10px;
+  border-radius: 6px;
 }
 
 .card-list--ver-detalles {
@@ -88,6 +122,39 @@
   color: var(--text-color);
 }
 
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.pagination-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.pagination-list p {
+  font-size: 24px;
+  color: var(--text-color);
+}
+
+.arrow-container {
+  display: flex;
+  background-color: var(--purple-light);
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 0.2rem 1rem;
+  border-radius: 10px;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
 @media screen and (max-width: 768px) {
   .list-section {
     padding: 1rem;

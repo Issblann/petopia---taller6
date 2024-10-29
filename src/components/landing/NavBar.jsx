@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import '../../styles/navbar.css';
 import logo from '../../assets/logo.svg';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const NavBar = () => {
+  const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -41,16 +42,20 @@ const NavBar = () => {
                 Perros
               </Link>
             </li>
-            <li>
-              <a href="#participar" onClick={handleLinkClick}>
-                Participar
-              </a>
-            </li>
-            <li>
-              <a href="#noticias" onClick={handleLinkClick}>
-                Noticias
-              </a>
-            </li>
+            {location.pathname === '/' ? (
+              <>
+                <li>
+                  <a href="#participar" onClick={handleLinkClick}>
+                    Participar
+                  </a>
+                </li>
+                <li>
+                  <a href="#noticias" onClick={handleLinkClick}>
+                    Noticias
+                  </a>
+                </li>
+              </>
+            ) : null}
           </ul>
         </div>
 
