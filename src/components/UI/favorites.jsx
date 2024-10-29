@@ -29,8 +29,12 @@ export const Favorites = () => {
   }, [favoritesCats, favoritesDogs]);
 
   const handleRemoveFavorite = (id) => {
-    dispatch(thunks.removeFavorite({ id, path: location.pathname }));
-  };
+    if (location.pathname.includes('/gatos')) {
+      dispatch(thunks.removeFavoriteCat({ id }));
+    } else if (location.pathname.includes('/perros')) {
+      dispatch(thunks.removeFavoriteDog({ id }));
+    }
+  };  
 
   if (status === 'loading') {
     return <div className="loading">Cargando datos de mascotas...</div>;
