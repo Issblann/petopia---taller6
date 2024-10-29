@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { thunks } from '../../redux/slice/animals/thunks'; // Ajusta la ruta según tu estructura
+import { thunks } from '../../redux/slice/animals/thunks';
 import { FaTrash } from 'react-icons/fa';
 import { PiArrowLeftDuotone, PiArrowRightDuotone } from 'react-icons/pi';
 import '../../styles/list/styles.css';
@@ -10,14 +10,12 @@ export const Favorites = () => {
   const dispatch = useDispatch();
   const location = useLocation();
 
-  // Selecciona el estado de favoritos de gatos o perros según la ruta
   const favoritesCats = useSelector((state) => state.animals.favoritesCats);
   const favoritesDogs = useSelector((state) => state.animals.favoritesDogs);
   const status = useSelector((state) => state.animals.status);
   const error = useSelector((state) => state.animals.error);
 
   useEffect(() => {
-    // Carga los favoritos cuando el componente se monta
     if (location.pathname.includes('/gatos')) {
       dispatch(thunks.fetchFavoritesCats());
     } else if (location.pathname.includes('/perros')) {
@@ -31,7 +29,6 @@ export const Favorites = () => {
   }, [favoritesCats, favoritesDogs]);
 
   const handleRemoveFavorite = (id) => {
-    // Despacha la acción para eliminar favoritos
     dispatch(thunks.removeFavorite({ id, path: location.pathname }));
   };
 
@@ -43,7 +40,6 @@ export const Favorites = () => {
     return <div className="error">Error: {error}</div>;
   }
 
-  // Determina la lista de favoritos según la ruta actual
   const favorites = location.pathname.includes('/gatos') ? favoritesCats : favoritesDogs;
 
   if (!favorites || favorites.length === 0) {
