@@ -10,27 +10,7 @@ main {
   position: relative;
   z-index: 3;
 }
-.svg1 {
-  position: absolute;
-  top: 22%;
-  left: 0;
-  z-index: -1;
-  opacity: 0.9;
-}
-.svg2 {
-  position: absolute;
-  top: 32%;
-  right: 0;
-  z-index: -1;
-  opacity: 0.9;
-}
-.svg3 {
-  position: absolute;
-  top: 60%;
-  right: 0;
-  z-index: -1;
-  opacity: 0.9;
-}
+
 @media (max-width: 1024px) {
   main {
     max-width: 964px;
@@ -40,10 +20,5 @@ main {
 @media (max-width: 768px) {
   main {
     gap: 4rem;
-  }
-  .svg1,
-  .svg2,
-  .svg3 {
-    display: none;
   }
 }
