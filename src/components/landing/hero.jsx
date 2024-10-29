@@ -29,11 +29,9 @@ const Hero = () => {
       </div>
 
       <div className="hero-column right-column">
-        <div className="image-container">
-          <img src={Pets} alt="Mascotas" className="mascotas-img" />
+        <img src={Pets} alt="Mascotas" className="mascotas-img" />
 
-          <img src={Vector} alt="..." className="vector-bg" />
-        </div>
+        <img src={Vector} alt="..." className="vector-bg" />
       </div>
     </section>
   );
