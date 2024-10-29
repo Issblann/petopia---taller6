@@ -1,22 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Rammetto+One&display=swap");
-
-body {
-  font-family: "Poppins", sans-serif;
-  overflow-x: hidden;
-}
-
 .hero-container {
   display: flex;
   justify-content: center;
-  padding: 50px 0px;
   background-color: #f9f9f9;
   width: 100%;
-  flex-direction: row;
+  height: 100%;
 }
 
 .left-column {
-  width: 50%;
-  height: 100vh;
+  width: 60%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -24,19 +15,13 @@ body {
   padding: 20px;
   background-image: url(../../assets/images/image_hero2.png);
   background-size: cover;
-  background-position: center;
-  position: relative;
 }
 
-.left-column::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
+/* .left-column::before {
   width: 100%;
   height: 100%;
   z-index: 1;
-}
+} */
 
 .hero-title,
 .hero-text,
@@ -47,38 +32,46 @@ body {
 
 .hero-title {
   font-size: 3rem;
+  font-weight: 400;
+  padding: 1rem;
   color: #0e2515;
   margin-bottom: 20px;
-  font-family: "Rammetto One", cursive;
+  text-align: left;
 }
 
 .hero-text {
   font-size: 1.2rem;
   color: #0e2515;
+  text-align: left;
+  padding: 0 1rem;
   margin-bottom: 30px;
 }
 
 .hero-buttons {
-  max-width: 500px;
+  width: 100%;
+  min-height: 270px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  background-color: white;
-  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.59);
+  padding: 40px;
   gap: 20px;
 }
 
 .hero-buttons p {
-  font-size: 1.2rem;
+  font-size: 2rem;
   font-weight: bold;
   margin: 0;
-  text-align: center;
+  text-align: left;
+  width: 100%;
 }
 
 .hero-btn-container {
   display: flex;
-  gap: 10px;
+  gap: 20px;
+  width: 100%;
 }
 
 .hero-btn {
@@ -87,6 +80,7 @@ body {
   justify-content: center;
   align-items: center;
   color: white;
+  width: 100%;
   border: solid #8645a0 3px;
   padding: 5px 30px;
   font-size: 1rem;
@@ -109,26 +103,28 @@ body {
   justify-content: left;
   align-items: center;
   position: relative;
+  height: 100%;
 }
 
 .image-container {
   position: relative;
   width: 100%;
-  height: 100vh;
   z-index: 1;
 }
 
 .mascotas-img {
-  width: 100%;
-  height: 100vh;
+  display: flex;
+  object-fit: cover;
+  max-width: 100%;
+  height: auto;
 }
 
 .vector-bg {
   position: absolute;
-  top: -45px;
-  right: -80px;
-  width: 100%;
-  height: 100%;
+  top: -5%;
+  left: -84px;
+  overflow: hidden;
+  width: 115%;
   z-index: -1;
 }
 
@@ -142,7 +138,7 @@ body {
   }
 
   .hero-btn {
-    width: 150px;
+    max-width: 50%;
     padding: 5px 20px;
   }
 
@@ -154,7 +150,6 @@ body {
 @media (max-width: 768px) {
   .hero-container {
     flex-direction: column;
-    padding: 30px;
   }
 
   .left-column,
@@ -181,6 +176,8 @@ body {
   .hero-btn-container {
     flex-direction: column;
     gap: 15px;
+    justify-content: center;
+    align-items: center;
   }
 
   .hero-btn {
@@ -189,6 +186,7 @@ body {
 
   .image-container {
     height: auto;
+    background-color: #d9d9d9;
   }
 
   .mascotas-img {

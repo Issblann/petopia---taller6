@@ -1,8 +1,8 @@
-import "/src/styles/hero/hero.css"; // Importamos el archivo CSS para los estilos
-import Dog from "../../assets/vectors/perro.svg"; // Imagen de perrito (icono del botón)
-import Cat from "../../assets/vectors/gato.svg"; // Imagen de gatito (icono del botón)
-import Vector from "../../assets/vectors/figure.svg"; // Vector para el fondo, si lo necesitas
-import Pets from "../../assets/images/image_hero1.png"; // Imagen de mascotas para la derecha
+import '/src/styles/hero/hero.css'; // Importamos el archivo CSS para los estilos
+import Dog from '../../assets/vectors/perro.svg'; // Imagen de perrito (icono del botón)
+import Cat from '../../assets/vectors/gato.svg'; // Imagen de gatito (icono del botón)
+import Vector from '../../assets/vectors/figure.svg'; // Vector para el fondo, si lo necesitas
+import Pets from '../../assets/images/image_hero1.png'; // Imagen de mascotas para la derecha
 
 const Hero = () => {
   return (
@@ -30,14 +30,9 @@ const Hero = () => {
 
       <div className="hero-column right-column">
         <div className="image-container">
-          <img
-            src={Pets}
-            alt="Mascotas"
-            className="mascotas-img"
-          />
-          <div className="vector-bg">
-            <img src={Vector} alt="..." />
-          </div>{" "}
+          <img src={Pets} alt="Mascotas" className="mascotas-img" />
+
+          <img src={Vector} alt="..." className="vector-bg" />
         </div>
       </div>
     </section>
