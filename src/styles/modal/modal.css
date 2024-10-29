@@ -1,100 +1,107 @@
+/* modal.css */
 .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.7);
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     z-index: 1000;
-    padding: 20px;
   }
   
   .modal-content {
     background: white;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
+    width: 90%;
     max-width: 500px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    transition: all 0.3s ease;
   }
   
   .modal-close {
-    align-self: flex-end;
-    background: transparent;
+    position: absolute;
+    top: 10px;
+    right: 15px;
     border: none;
+    background: transparent;
+    font-size: 24px;
     cursor: pointer;
-    font-size: 20px;
-    padding: 10px;
   }
   
   .modal-body {
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    align-items: center;
   }
   
-  .image-container {
-    display: flex;
-    justify-content: center;
+  .modal-image-container {
     position: relative;
+    margin-bottom: 15px;
   }
   
-  .modal-image {
-    max-width: 100%;
+  .modal-pet-image {
+    width: 100%;
     height: auto;
     border-radius: 8px;
   }
   
-  .favorite-button {
+  .modal-heart {
     position: absolute;
     top: 10px;
     right: 10px;
-    background: transparent;
-    border: none;
     cursor: pointer;
   }
   
-  .modal-info {
-    margin-top: 20px;
+  .modal-pet-info {
+    text-align: center;
   }
   
-  .modal-actions {
+  .modal-buttons {
     display: flex;
     justify-content: space-between;
     margin-top: 15px;
+    width: 100%;
   }
   
-  .share-button, .more-info-button {
-    padding: 10px 15px;
-    border: none;
+  .modal-button {
     background-color: #8645a0;
     color: white;
+    border: none;
+    padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
     flex: 1;
     margin: 0 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .modal-button:hover {
+    background-color: #6d37a1;
   }
   
   @media (max-width: 600px) {
-    .modal-body {
-      padding: 10px;
-    }
-    
-    .modal-info h2 {
-      font-size: 1.5rem;
+    .modal-content {
+      padding: 15px;
     }
   
-    .modal-actions {
-      flex-direction: column;
+    .modal-close {
+      top: 5px;
+      right: 10px;
+      font-size: 20px;
     }
-    
-    .share-button, .more-info-button {
-      margin: 5px 0;
+  
+    .modal-pet-image {
+      border-radius: 5px;
+    }
+  
+    .modal-button {
+      padding: 8px 12px;
+      font-size: 14px;
     }
   }
   
