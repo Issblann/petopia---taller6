@@ -1,10 +1,10 @@
 import React from 'react';
-import '../../styles/section3.css';
+import '../../styles/seccion-4-conectando/styles.css';
 import image1 from '../../assets/images/image1.png';
 import image2 from '../../assets/images/image2.png';
 import image3 from '../../assets/images/image3.png';
 
-const Section3 = () => {
+export const SeccionConectando = () => {
   return (
     <section className="section-container">
       <div className="text-container">
@@ -25,5 +25,3 @@ const Section3 = () => {
     </section>
   );
 };
-
-export default Section3;

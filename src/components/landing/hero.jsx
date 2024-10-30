@@ -1,10 +1,12 @@
-import '/src/styles/hero/hero.css'; // Importamos el archivo CSS para los estilos
+import '../../styles/hero/styles.css';
 import Dog from '../../assets/vectors/perro.svg'; // Imagen de perrito (icono del botón)
 import Cat from '../../assets/vectors/gato.svg'; // Imagen de gatito (icono del botón)
 import Vector from '../../assets/vectors/figure.svg'; // Vector para el fondo, si lo necesitas
 import Pets from '../../assets/images/image_hero1.png'; // Imagen de mascotas para la derecha
+import { Link, useNavigate } from 'react-router-dom';
 
-const Hero = () => {
+export const Hero = () => {
+  const navigate = useNavigate();
   return (
     <section className="hero-container">
       <div className="hero-column left-column">
@@ -19,10 +21,14 @@ const Hero = () => {
           <p>¡Encuentra tu match!</p>
           <div className="hero-btn-container">
             <button className="hero-btn">
-              <img src={Cat} alt="Buscar Gatitos" className="icon" />
+              <Link to={'/gatos'}>
+                <img src={Cat} alt="Buscar Gatitos" className="icon" />
+              </Link>
             </button>
             <button className="hero-btn">
-              <img src={Dog} alt="Buscar Perritos" className="icon" />
+              <Link to={'/perros'}>
+                <img src={Dog} alt="Buscar Perritos" className="icon" />
+              </Link>
             </button>
           </div>
         </div>
@@ -36,5 +42,3 @@ const Hero = () => {
     </section>
   );
 };
-
-export default Hero;

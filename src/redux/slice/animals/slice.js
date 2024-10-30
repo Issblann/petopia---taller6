@@ -65,6 +65,56 @@ const animalsSlice = createSlice({
       .addCase(thunks.fetchFavoritesDogs.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.payload;
+      })
+      // Agregar casos para eliminar favoritos
+      .addCase(thunks.removeFavoriteCat.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(thunks.removeFavoriteCat.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.favoritesCats = state.favoritesCats.filter(
+          (cat) => cat.id !== action.payload
+        );
+      })
+      .addCase(thunks.removeFavoriteCat.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.payload;
+      })
+      .addCase(thunks.removeFavoriteDog.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(thunks.removeFavoriteDog.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        // Eliminar el perro favorito usando el id retornado
+        state.favoritesDogs = state.favoritesDogs.filter(
+          (dog) => dog.id !== action.payload
+        );
+      })
+      .addCase(thunks.removeFavoriteDog.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.payload;
+      })
+      .addCase(thunks.fetchCatById.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(thunks.fetchCatById.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.cat = action.payload;
+      })
+      .addCase(thunks.fetchCatById.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.payload;
+      })
+      .addCase(thunks.fetchDogById.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(thunks.fetchDogById.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.dog = action.payload;
+      })
+      .addCase(thunks.fetchDogById.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.payload;
       });
   },
 });

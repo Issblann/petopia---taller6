@@ -10,8 +10,16 @@ export const ListDogsAndCats = () => {
   const location = useLocation();
   const [petNames, setPetNames] = useState([]);
 
-  const { cats, dogs, currentPage, favoritesCats, favoritesDogs, status } =
-    useSelector((state) => state.animals);
+  const {
+    cats,
+    dogs,
+    currentPage,
+    favoritesCats,
+    favoritesDogs,
+    status,
+    cat,
+    dog,
+  } = useSelector((state) => state.animals);
   useEffect(() => {
     if (location.pathname === '/gatos') {
       dispatch(thunks.fetchCats({ page: currentPage }));
@@ -32,28 +40,11 @@ export const ListDogsAndCats = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const addFavoriteHandler = (id) => {
-    try {
-      if (location.pathname === '/gatos') {
-        dispatch(
-          thunks.postFavoriteCat({
-            favorite: { image_id: id, sub_id: 'my-user-1234' },
-          })
-        );
-        dispatch(thunks.fetchFavoritesCats());
-      } else if (location.pathname === '/perros') {
-        dispatch(
-          thunks.postFavoriteDog({
-            favorite: { image_id: id, sub_id: 'my-user-1234' },
-          })
-        );
-        dispatch(thunks.fetchFavoritesDogs());
-      }
-    } catch (error) {
-      console.error(
-        'Error adding favorite:',
-        error.response?.data || error.message
-      );
+  const getPetById = (id) => {
+    if (location.pathname === '/gatos') {
+      dispatch(thunks.fetchCatById({ id }));
+    } else if (location.pathname === '/perros') {
+      dispatch(thunks.fetchDogById({ id }));
     }
   };
 
@@ -64,8 +55,8 @@ export const ListDogsAndCats = () => {
       status={status}
       handlePreviousPage={handlePreviousPage}
       handleNextPage={handleNextPage}
-      addFavoriteHandler={addFavoriteHandler}
       location={location}
+      getPetById={getPetById}
       currentPage={currentPage}
       favoritesCats={favoritesCats}
       favoritesDogs={favoritesDogs}

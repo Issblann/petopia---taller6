@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import '../../styles/navbar.css';
-import logo from '../../assets/logo.svg';
+import '../../styles/navbar/styles.css';
+import logo from '../../assets/vectors/logo.svg';
 import { Link, useLocation } from 'react-router-dom';
 
-const NavBar = () => {
+export const NavBar = () => {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
 

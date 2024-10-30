@@ -48,8 +48,20 @@ export const thunks = {
       }
     }
   ),
+  // Nueva función para eliminar un gato favorito
+  removeFavoriteCat: createAsyncThunk(
+    'cats/removeFavoriteCat',
+    async ({ id }, { rejectWithValue }) => {
+      try {
+        const response = await CatService.deleteFavoriteCat(id); // Llama al método
+        return id; // Retorna el id del gato que se eliminó
+      } catch (error) {
+        return rejectWithValue(error.response?.data || 'Error deleting cat');
+      }
+    }
+  ),
   fetchDogs: createAsyncThunk(
-    'cats/fetchDogs',
+    'dogs/fetchDogs',
     async ({ page }, { rejectWithValue }) => {
       try {
         const response = await DogService.getDogs(page);
@@ -61,7 +73,7 @@ export const thunks = {
   ),
 
   fetchFavoritesDogs: createAsyncThunk(
-    'cats/fetchFavoritesDogs',
+    'dogs/fetchFavoritesDogs',
     async (_, { rejectWithValue }) => {
       try {
         const response = await DogService.getDogFavorites();
@@ -72,7 +84,7 @@ export const thunks = {
     }
   ),
   postFavoriteDog: createAsyncThunk(
-    'cats/postFavoriteDog',
+    'dogs/postFavoriteDog',
     async ({ favorite }, { rejectWithValue }) => {
       try {
         const response = await DogService.postDogFavorite(favorite);
@@ -83,13 +95,25 @@ export const thunks = {
     }
   ),
   fetchDogById: createAsyncThunk(
-    'cats/fetchDogById',
+    'dogs/fetchDogById',
     async ({ id }, { rejectWithValue }) => {
       try {
         const response = await DogService.getDogById(id);
         return response;
       } catch (error) {
         return rejectWithValue(error.response?.data || 'Error fetching cats');
+      }
+    }
+  ),
+  // Nueva función para eliminar un perro favorito
+  removeFavoriteDog: createAsyncThunk(
+    'dogs/removeFavoriteDog',
+    async ({ id }, { rejectWithValue }) => {
+      try {
+        const response = await DogService.deleteFavoriteDog(id); // Llama al método
+        return id; // Retorna el id del perro que se eliminó
+      } catch (error) {
+        return rejectWithValue(error.response?.data || 'Error deleting dog');
       }
     }
   ),
