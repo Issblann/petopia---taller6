@@ -47,7 +47,7 @@ export const Favorites = () => {
 
   if (!favorites || favorites.length === 0) {
     return (
-      <div className="no-data">No hay mascotas favoritas en este momento.</div>
+      <div className="loading">No hay mascotas favoritas en este momento.</div>
     );
   }
 
