@@ -1,11 +1,42 @@
 import React, { useState } from 'react';
 import '../../styles/modal/modal.css';
-import { PiHeartFill, PiHeart } from 'react-icons/pi'; 
+import { PiHeartFill, PiHeart } from 'react-icons/pi';
+import { useDispatch, useSelector } from 'react-redux';
+import { thunks } from '../../redux/slice/animals/thunks';
+import { useLocation } from 'react-router-dom';
 
 export const Modal = ({ isOpen, onClose, petDetails }) => {
-  const [isFavorite, setIsFavorite] = useState(false); 
-
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const [isFavorite, setIsFavorite] = useState(false);
+  const { cat, dog } = useSelector((state) => state.animals);
   if (!isOpen) return null;
+  const isCatsPage = location.pathname === '/gatos';
+  const data = isCatsPage ? cat : dog;
+  const addFavoriteHandler = (id) => {
+    try {
+      if (location.pathname === '/gatos') {
+        dispatch(
+          thunks.postFavoriteCat({
+            favorite: { image_id: id, sub_id: 'my-user-1234' },
+          })
+        );
+        dispatch(thunks.fetchFavoritesCats());
+      } else if (location.pathname === '/perros') {
+        dispatch(
+          thunks.postFavoriteDog({
+            favorite: { image_id: id, sub_id: 'my-user-1234' },
+          })
+        );
+        dispatch(thunks.fetchFavoritesDogs());
+      }
+    } catch (error) {
+      console.error(
+        'Error adding favorite:',
+        error.response?.data || error.message
+      );
+    }
+  };
 
   const handleFavoriteToggle = () => {
     setIsFavorite(!isFavorite);
@@ -28,28 +59,35 @@ export const Modal = ({ isOpen, onClose, petDetails }) => {
         <button className="modal-close" onClick={onClose}>
           &times;
         </button>
-        
+
         <h2>Detalles de la Mascota</h2>
         <div className="modal-body">
           <div className="modal-image-container">
-            <img src={petDetails?.url} alt={petDetails?.name} loading="lazy" className="modal-pet-image" />
+            <img
+              src={data?.url}
+              alt={data?.name}
+              loading="lazy"
+              className="modal-pet-image"
+            />
             <div className="modal-heart" onClick={handleFavoriteToggle}>
               {isFavorite ? (
                 <PiHeartFill size={30} color="#8645a0" />
               ) : (
-                <PiHeart size={30} />
+                <PiHeart
+                  size={30}
+                  onClick={() => addFavoriteHandler(data.id)}
+                />
               )}
             </div>
           </div>
-          <div className="modal-pet-info">
-            <h3>{petDetails?.name}</h3>
-            <p>Raza: {petDetails?.breed || 'Desconocida'}</p>
-            <p>Temperamento: {petDetails?.temperament || 'Desconocido'}</p>
-            <div className="modal-buttons">
-              <button className="modal-button" onClick={handleMoreInfo}>Más Información</button>
-              <button className="modal-button" onClick={handleShare}>Compartir</button>
+
+          {data?.breeds?.map((breed) => (
+            <div className="modal-pet-info" key={breed.id}>
+              <h3>Raza: {breed?.name || 'Desconocida'}</h3>
+              <p>Descripcion: {breed.description || 'No descripcion '}</p>
             </div>
-          </div>
+          ))}
+          <div className="modal-buttons"></div>
         </div>
       </div>
     </div>
