@@ -5,7 +5,7 @@ import {
   PiArrowRightDuotone,
   PiHeartFill,
 } from 'react-icons/pi';
-import { Modal } from '../../components/UI/Modal';
+import { Modal } from '../../components/UI/modal';
 import { useNavigate } from 'react-router-dom';
 
 export const ListPresentation = ({
@@ -13,7 +13,6 @@ export const ListPresentation = ({
   dogs,
   location,
   getPetById,
-  addFavoriteHandler,
   handlePreviousPage,
   handleNextPage,
   favoritesCats,
