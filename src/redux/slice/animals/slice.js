@@ -2,7 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 import initialState from './state';
 import reducers from './reducers';
 import { thunks } from './thunks';
-
 const animalsSlice = createSlice({
   name: 'animals',
   initialState,
@@ -49,7 +48,7 @@ const animalsSlice = createSlice({
       })
       .addCase(thunks.postFavoriteDog.rejected, (state, action) => {
         state.status = 'failed';
-        state.error = action.payload;
+        state.error = action;
       })
       .addCase(thunks.fetchFavoritesCats.fulfilled, (state, action) => {
         state.status = 'succeeded';

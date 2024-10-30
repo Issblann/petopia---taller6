@@ -1,41 +1,37 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 import '../../styles/list/styles.css';
-import { PiArrowLeftDuotone, PiArrowRightDuotone, PiHeartFill } from 'react-icons/pi';
+import {
+  PiArrowLeftDuotone,
+  PiArrowRightDuotone,
+  PiHeartFill,
+} from 'react-icons/pi';
+import { Modal } from '../../components/UI/Modal';
 
 export const ListPresentation = ({
-  cats,
-  dogs,
+  data,
   location,
-  handlePreviousPage,
-  handleNextPage,
-  favoritesCats,
-  favoritesDogs,
-  currentPage,
-  status,
-  openModal,
+  addFavoriteHandler,
+  favoritesData,
+  petNames,
+  isLoading,
 }) => {
-  const navigate = useNavigate();
-  const isCatsPage = location.pathname === '/gatos';
-  const data = isCatsPage ? cats : dogs;
-  const favoritesData = isCatsPage ? favoritesCats : favoritesDogs;
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedPetData, setSelectedPetData] = useState(null);
 
-  const handleRedirect = () => {
-    const path = isCatsPage ? '/gatos/favoritos' : '/perros/favoritos';
-    navigate(path);
+  const openModal = (petData) => {
+    setSelectedPetData(petData);
+    setIsModalOpen(true);
   };
 
-  if (status === 'loading') {
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedPetData(null);
+  };
+
+  if (isLoading) {
     return (
       <div className="loading">
         <p>Cargando datos de mascotas...</p>
-      </div>
-    );
-  }
-  if (data.length === 0) {
-    return (
-      <div className="loading">
-        <p>No hay datos de mascotas</p>
       </div>
     );
   }
@@ -43,23 +39,26 @@ export const ListPresentation = ({
   return (
     <section className="list-section">
       <h1 className="title-pet">
-        {location.pathname === '/gatos' ? 'GATOS EN ADOPCIÓN' : 'PERROS EN ADOPCIÓN'}
+        {location.pathname === '/gatos'
+          ? 'GATOS EN ADOPCIÓN'
+          : 'PERROS EN ADOPCIÓN'}
       </h1>
       <div className="favorites-button-container">
-        <button className="button-favorites" onClick={handleRedirect}>
+        <button className="button-favorites">
           <PiHeartFill size={35} color="#8645a0" />
           Ver favoritos <span>({favoritesData.length})</span>
         </button>
       </div>
       <ul className="list">
-        {data &&
-          data.map((data) => (
-            <li className="card-list--pet" key={data.id}>
-              <img src={data.url} alt={data.id} loading="lazy" />
+        {data.map((pet, i) => {
+          const petName = petNames[i];
+          return (
+            <li className="card-list--pet" key={pet.id}>
+              <img src={pet.url} alt={pet.id} loading="lazy" />
 
-              {data.breeds.map((breed) => (
+              {pet.breeds.map((breed) => (
                 <div className="card-list__information" key={breed.id}>
-                  <h1>{data.name}</h1>
+                  {pet ? <h1>{petName?.firstName}</h1> : ''}
                   <p>{breed.name}</p>
 
                   {breed.temperament && (
@@ -75,29 +74,36 @@ export const ListPresentation = ({
 
                   <button
                     className="card-list--ver-detalles"
-                    onClick={() => openModal({ url: data.url, name: data.name, breed: breed.name, temperament: breed.temperament })}
+                    onClick={() => openModal({ 
+                      id: pet.id, 
+                      url: pet.url, 
+                      name: petName?.firstName, 
+                      breed: breed.name, 
+                      temperament: breed.temperament 
+                    })}
                   >
                     Ver detalles
                   </button>
                 </div>
               ))}
             </li>
-          ))}
+          );
+        })}
       </ul>
 
       <div className="pagination-list">
-        <button
-          onClick={() => handlePreviousPage()}
-          className={`arrow-container ${currentPage === 0 ? 'disabled' : ''}`}
-        >
+        <div className="arrow-container disabled">
           <PiArrowLeftDuotone size={25} color="#8645a0" />
-        </button>
+        </div>
 
-        <p>{currentPage === 0 ? 'Principal' : currentPage}</p>
-        <button className="arrow-container" onClick={() => handleNextPage()}>
+        <p>1</p>
+        <div className="arrow-container">
           <PiArrowRightDuotone size={25} color="#8645a0" />
-        </button>
+        </div>
       </div>
+
+      {/* Aquí renderizamos el modal */}
+      <Modal isOpen={isModalOpen} onClose={closeModal} petDetails={selectedPetData} />
     </section>
   );
 };

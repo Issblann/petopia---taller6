@@ -12,10 +12,9 @@ export const Modal = ({ isOpen, onClose, petDetails }) => {
   };
 
   const handleShare = () => {
-    // Obtener la ruta actual y el ID de la mascota
-    const currentUrl = window.location.origin; // Base de la URL actual
+    const currentUrl = window.location.origin;
     const petId = petDetails?.id;
-    const shareUrl = `${currentUrl}/pets/${petId}`; // Concatenar la ruta deseada
+    const shareUrl = `${currentUrl}/pets/${petId}`;
     alert(`Compartir: ${shareUrl}`);
   };
 
