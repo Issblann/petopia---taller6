@@ -61,7 +61,7 @@ export const thunks = {
     }
   ),
   fetchDogs: createAsyncThunk(
-    'cats/fetchDogs',
+    'dogs/fetchDogs',
     async ({ page }, { rejectWithValue }) => {
       try {
         const response = await DogService.getDogs(page);
@@ -73,7 +73,7 @@ export const thunks = {
   ),
 
   fetchFavoritesDogs: createAsyncThunk(
-    'cats/fetchFavoritesDogs',
+    'dogs/fetchFavoritesDogs',
     async (_, { rejectWithValue }) => {
       try {
         const response = await DogService.getDogFavorites();
@@ -84,7 +84,7 @@ export const thunks = {
     }
   ),
   postFavoriteDog: createAsyncThunk(
-    'cats/postFavoriteDog',
+    'dogs/postFavoriteDog',
     async ({ favorite }, { rejectWithValue }) => {
       try {
         const response = await DogService.postDogFavorite(favorite);
@@ -95,7 +95,7 @@ export const thunks = {
     }
   ),
   fetchDogById: createAsyncThunk(
-    'cats/fetchDogById',
+    'dogs/fetchDogById',
     async ({ id }, { rejectWithValue }) => {
       try {
         const response = await DogService.getDogById(id);
