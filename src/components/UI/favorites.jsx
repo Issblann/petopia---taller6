@@ -23,13 +23,14 @@ export const Favorites = () => {
     }
   }, [dispatch, location.pathname]);
 
-  useEffect(() => {
-    console.log('Favoritos de gatos:', favoritesCats);
-    console.log('Favoritos de perros:', favoritesDogs);
-  }, [favoritesCats, favoritesDogs]);
+  useEffect(() => {}, [favoritesCats, favoritesDogs]);
 
   const handleRemoveFavorite = (id) => {
-    dispatch(thunks.removeFavorite({ id, path: location.pathname }));
+    if (location.pathname.includes('/gatos'))
+      dispatch(thunks.removeFavoriteCat({ id, path: location.pathname }));
+    else if (location.pathname.includes('/perros')) {
+      dispatch(thunks.removeFavoriteCat({ id, path: location.pathname }));
+    }
   };
 
   if (status === 'loading') {
@@ -40,24 +41,37 @@ export const Favorites = () => {
     return <div className="error">Error: {error}</div>;
   }
 
-  const favorites = location.pathname.includes('/gatos') ? favoritesCats : favoritesDogs;
+  const favorites = location.pathname.includes('/gatos')
+    ? favoritesCats
+    : favoritesDogs;
 
   if (!favorites || favorites.length === 0) {
-    return <div className="no-data">No hay mascotas favoritas en este momento.</div>;
+    return (
+      <div className="no-data">No hay mascotas favoritas en este momento.</div>
+    );
   }
 
   return (
     <section className="list-section">
       <h1 className="title-pet">
-        {location.pathname.includes('/gatos') ? 'GATOS FAVORITOS' : 'PERROS FAVORITOS'}
+        {location.pathname.includes('/gatos')
+          ? 'GATOS FAVORITOS'
+          : 'PERROS FAVORITOS'}
       </h1>
       <ul className="list">
         {favorites.map((favorite) => (
           <li className="card-list--pet" key={favorite.id}>
-            <img src={favorite.image?.url} alt={`Favorito ${favorite.id}`} loading="lazy" />
+            <img
+              src={favorite.image?.url}
+              alt={`Favorito ${favorite.id}`}
+              loading="lazy"
+            />
             <div className="card-list__information">
               <h1>{favorite.breed?.name}</h1>
-              <button className="card-list--ver-detalles" onClick={() => handleRemoveFavorite(favorite.id)}>
+              <button
+                className="card-list--ver-detalles"
+                onClick={() => handleRemoveFavorite(favorite.id)}
+              >
                 <FaTrash /> Eliminar
               </button>
             </div>
