@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ListDogsAndCats } from '../components/UI/list.logic';
 import { Home } from '../components/home';
-import {Favorites} from '../components/UI/favorites';
+import { Favorites } from '../components/UI/favorites';
 
 const AppRoutes = () => {
   return (

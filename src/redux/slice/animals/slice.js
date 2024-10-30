@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import initialState from './state';
 import reducers from './reducers';
 import { thunks } from './thunks';
+
 const animalsSlice = createSlice({
   name: 'animals',
   initialState,
@@ -48,7 +49,7 @@ const animalsSlice = createSlice({
       })
       .addCase(thunks.postFavoriteDog.rejected, (state, action) => {
         state.status = 'failed';
-        state.error = action;
+        state.error = action.payload;
       })
       .addCase(thunks.fetchFavoritesCats.fulfilled, (state, action) => {
         state.status = 'succeeded';
@@ -63,6 +64,30 @@ const animalsSlice = createSlice({
         state.favoritesDogs = action.payload;
       })
       .addCase(thunks.fetchFavoritesDogs.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.payload;
+      })
+      // Agregar casos para eliminar favoritos
+      .addCase(thunks.removeFavoriteCat.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(thunks.removeFavoriteCat.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.favoritesCats = state.favoritesCats.filter(cat => cat.id !== action.payload);
+      })
+      .addCase(thunks.removeFavoriteCat.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.payload;
+      })
+      .addCase(thunks.removeFavoriteDog.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(thunks.removeFavoriteDog.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        // Eliminar el perro favorito usando el id retornado
+        state.favoritesDogs = state.favoritesDogs.filter(dog => dog.id !== action.payload);
+      })
+      .addCase(thunks.removeFavoriteDog.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.payload;
       });

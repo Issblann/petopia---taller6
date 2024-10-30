@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { thunks } from '../../redux/slice/animals/thunks';
 import { actions } from '../../redux/slice/animals/slice';
-import { Modal } from '../../components/UI/modal';
+import { Modal } from './Modal';
 
 export const ListDogsAndCats = () => {
   const dispatch = useDispatch();

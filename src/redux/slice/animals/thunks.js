@@ -14,25 +14,31 @@ export const thunks = {
       }
     }
   ),
+  
   postFavoriteCat: createAsyncThunk(
     'cats/postFavoriteCat',
     async ({ favorite }, { rejectWithValue }) => {
+      if (!favorite?.image_id) {
+        return rejectWithValue('El objeto favorito no contiene un image_id válido.');
+      }
       try {
         const res = await CatService.postCatFavorite(favorite);
         return res;
       } catch (error) {
-        return rejectWithValue(error.response?.data || 'Error fetching cats');
+        return rejectWithValue(error.response?.data || 'Error posting favorite cat');
       }
     }
   ),
+  
+  
   fetchFavoritesCats: createAsyncThunk(
     'cats/fetchFavoritesCats',
-    async (_, { rejectWithValue }) => {
+    async ({ subId }, { rejectWithValue }) => {
       try {
-        const favorites = await CatService.getCatFavorites();
-        return favorites;
+        const response = await CatService.getCatFavorites(subId); // Asegúrate de que tu método CatService tenga el soporte necesario
+        return response;
       } catch (error) {
-        return rejectWithValue(error.response?.data || 'Error fetching cats');
+        return rejectWithValue(error.response?.data || 'Error fetching favorites by sub ID');
       }
     }
   ),
@@ -44,10 +50,24 @@ export const thunks = {
         const response = await CatService.getCatById(id);
         return response;
       } catch (error) {
-        return rejectWithValue(error.response?.data || 'Error fetching cats');
+        return rejectWithValue(error.response?.data || 'Error fetching cat by ID');
       }
     }
   ),
+  
+  // Nueva función para eliminar un gato favorito
+  removeFavoriteCat: createAsyncThunk(
+    'cats/removeFavoriteCat',
+    async ({ id }, { rejectWithValue }) => {
+      try {
+        await CatService.deleteFavoriteCat(id); // Llama al método
+        return id; // Retorna el id del gato que se eliminó
+      } catch (error) {
+        return rejectWithValue(error.response?.data || 'Error deleting cat');
+      }
+    }
+  ),
+
   fetchDogs: createAsyncThunk(
     'cats/fetchDogs',
     async ({ page }, { rejectWithValue }) => {
@@ -55,7 +75,7 @@ export const thunks = {
         const response = await DogService.getDogs(page);
         return response;
       } catch (error) {
-        return rejectWithValue(error.response?.data || 'Error fetching cats');
+        return rejectWithValue(error.response?.data || 'Error fetching dogs');
       }
     }
   ),
@@ -67,10 +87,11 @@ export const thunks = {
         const response = await DogService.getDogFavorites();
         return response;
       } catch (error) {
-        return rejectWithValue(error.response?.data || 'Error fetching cats');
+        return rejectWithValue(error.response?.data || 'Error fetching favorite dogs');
       }
     }
   ),
+  
   postFavoriteDog: createAsyncThunk(
     'cats/postFavoriteDog',
     async ({ favorite }, { rejectWithValue }) => {
@@ -78,10 +99,11 @@ export const thunks = {
         const response = await DogService.postDogFavorite(favorite);
         return response;
       } catch (error) {
-        return rejectWithValue(error.response?.data || 'Error fetching cats');
+        return rejectWithValue(error.response?.data || 'Error posting favorite dog');
       }
     }
   ),
+
   fetchDogById: createAsyncThunk(
     'cats/fetchDogById',
     async ({ id }, { rejectWithValue }) => {
@@ -89,7 +111,20 @@ export const thunks = {
         const response = await DogService.getDogById(id);
         return response;
       } catch (error) {
-        return rejectWithValue(error.response?.data || 'Error fetching cats');
+        return rejectWithValue(error.response?.data || 'Error fetching dog by ID');
+      }
+    }
+  ),
+  
+  // Nueva función para eliminar un perro favorito
+  removeFavoriteDog: createAsyncThunk(
+    'cats/removeFavoriteDog',
+    async ({ id }, { rejectWithValue }) => {
+      try {
+        await DogService.deleteFavoriteDog(id); // Llama al método
+        return id; // Retorna el id del perro que se eliminó
+      } catch (error) {
+        return rejectWithValue(error.response?.data || 'Error deleting dog');
       }
     }
   ),
