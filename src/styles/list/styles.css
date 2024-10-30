@@ -4,7 +4,6 @@
   flex: 1;
   flex-direction: column;
   padding: 2rem;
-  height: 100vh;
 }
 
 .favorites-button-container {
@@ -43,7 +42,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 2rem;
-
+  min-height: 100%;
 }
 .card-list--pet {
   width: 100%;
