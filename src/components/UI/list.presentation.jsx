@@ -111,14 +111,17 @@ export const ListPresentation = ({
       </ul>
 
       <div className="pagination-list">
-        <div className="arrow-container disabled">
+        <button
+          onClick={() => handlePreviousPage()}
+          className={`arrow-container ${currentPage === 0 ? 'disabled' : ''}`}
+        >
           <PiArrowLeftDuotone size={25} color="#8645a0" />
-        </div>
+        </button>
 
-        <p>1</p>
-        <div className="arrow-container">
+        <p>{currentPage === 0 ? 'Principal' : currentPage}</p>
+        <button className="arrow-container" onClick={() => handleNextPage()}>
           <PiArrowRightDuotone size={25} color="#8645a0" />
-        </div>
+        </button>
       </div>
 
       {/* Aquí renderizamos el modal */}
